@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noStrictGenericChecks": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "baseUrl": "./",

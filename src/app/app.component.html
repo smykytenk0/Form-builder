@@ -1,1 +1,11 @@
-<app-login-page></app-login-page>
+<div>
+  Form
+  <app-login-form
+    (onAdd)="updateUsers($event)"
+  ></app-login-form>
+  <hr/>
+  <app-users
+    *ngFor="let u of users"
+    [user]="u"
+  ></app-users>
+</div>
