@@ -1,5 +1,4 @@
-<div>
-
+<div *ngIf="!isUserLogged; else userLogged">
   <input type = "text"
          placeholder="Email"
          [(ngModel)]="email">
@@ -7,4 +6,9 @@
          placeholder="Password"
          [(ngModel)]="password">
   <button (click)="onAddUser()">Add User</button>
-</div>
+  <button (click)="login()">Login</button>
+  </div>
+<ng-template #userLogged>
+  <h1>U're logged! Congrats!</h1>
+  <button (click)="logout()" >Logout</button>
+</ng-template>
