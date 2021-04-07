@@ -16,10 +16,9 @@ export class AppComponent {
     {email:"123poin@gmail.com", password:"12345678", id: 1},
     {email:"456point@gmail.com", password:"12312312", id:2}
   ];
+  title: "formbuilder";
 
   updateUsers(user: User) {
     this.users.unshift(user)
   }
 }
-
-
