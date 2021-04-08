@@ -3,3 +3,13 @@ export interface User {
   email: string,
   password: string
 }
+
+export interface ComponentStyles {
+  btnStyles?:{},
+  checkboxStyles?:{},
+  inputStyles?:{},
+  labelStyles?:{},
+  selectStyles?:{},
+  textareaStyles:{}
+}
+

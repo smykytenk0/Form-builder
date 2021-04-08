@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  selector: 'app-registration-form',
+  templateUrl: './registration-form.component.html',
+  styleUrls: ['./registration-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class RegistrationFormComponent implements OnInit {
   form: FormGroup;
-
 
   constructor() { }
 
@@ -22,6 +21,5 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     const formData ={...this.form.value};
   }
-
 
 }
