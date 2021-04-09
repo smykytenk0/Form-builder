@@ -1,0 +1,40 @@
+.form-wrapper{
+  display: flex;
+  height: 97vh;
+  border: 1px solid black;
+}
+
+app-acordion-section{
+  width: 33.33vw;
+  border-right: 1px solid black;
+
+}
+
+.example-box {
+  width: 200px;
+  height: 200px;
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: move;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-boundary {
+  display: flex;
+  width: 66.67vw;
+  height: 97vh;
+  max-width: 100%;
+}
+
+.builder-section{
+  width: 33.33vw;
+  height: 97vh;
+  border-right: 1px solid black;
+}
+
+
+
+
+

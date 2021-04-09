@@ -10,18 +10,25 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import {RouterModule, Routes} from "@angular/router";
+import { FormsComponent } from './forms/forms.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import { AcordionSectionComponent } from './acordion-section/acordion-section.component';
+
 
 const appRoutes: Routes = [
   {path:"login", component:LoginFormComponent},
   {path:"registration", component:RegistrationFormComponent},
-  {path:"", component:LoginFormComponent}
+  {path:"", component:LoginFormComponent},
+  {path:"forms", component: FormsComponent}
+
 ];
 
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent],
+  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, AcordionSectionComponent],
   imports: [
     BrowserModule,
+    DragDropModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {metaReducers}),

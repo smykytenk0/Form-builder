@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from "../app.component";
 
 @Component({
   selector: 'app-login-form',
@@ -8,9 +9,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
-
-
-  constructor() { }
+  isSubmited: boolean = false;
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -20,8 +21,9 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData ={...this.form.value};
+    const formData = {...this.form.value};
+    if(formData.email == 'smth@g' && formData.password == '123456'){
+      this.isSubmited = !this.isSubmited;
+    }
   }
-
-
 }

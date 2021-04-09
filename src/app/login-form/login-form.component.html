@@ -1,21 +1,26 @@
-<h1>Login form</h1>
-<div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <label>Email</label>
-    <input type="text" placeholder="email" formControlName="email">
-    <div class="validation" *ngIf="form.get('email').invalid &&form.get('email').touched">
-      <small *ngIf="form.get('email').errors.required">Field email couldn't be empty.</small>
-      <small *ngIf="form.get('email').errors.email">Enter correct email</small>
-    </div>
-    <label>Password</label>
-    <input type="password" placeholder="password" formControlName="password">
-    <div class="validation" *ngIf="form.get('password').invalid&&form.get('password').touched">
-      <small *ngIf="form.get('password').errors.required">Field password couldn't be empty</small>
-      <small *ngIf="form.get('password').errors.minlength">Too short. You should enter at least {{form.get('password').errors.minlength.requiredLength}} characters.
-        Now you have only {{form.get('password').errors.minlength.actualLength}} characters. </small>
-    </div>
-    <button type="submit" [disabled]="form.invalid">Login</button>
-  </form>
+<div *ngIf="!isSubmited; else successfulLogin">
+  <h1>Login form</h1>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>Email</label>
+      <input type="text" placeholder="email" formControlName="email" >
+      <div class="validation" *ngIf="form.get('email').invalid &&form.get('email').touched">
+        <small *ngIf="form.get('email').errors.required">Field email couldn't be empty.</small>
+        <small *ngIf="form.get('email').errors.email">Enter correct email</small>
+      </div>
+      <label>Password</label>
+      <input type="password" placeholder="password" autocomplete="on" formControlName="password">
+      <div class="validation" *ngIf="form.get('password').invalid&&form.get('password').touched">
+        <small *ngIf="form.get('password').errors.required">Field password couldn't be empty</small>
+        <small *ngIf="form.get('password').errors.minlength">Too short. You should enter at least {{form.get('password').errors.minlength.requiredLength}} characters.
+          Now you have only {{form.get('password').errors.minlength.actualLength}} characters. </small>
+      </div>
+      <button type="submit" [disabled]="form.invalid" (click)="onSubmit()">Login</button>
+    </form>
+  </div>
+  <h2>Not registered yet? You can do this right now: </h2>
+  <a routerLink="/registration">Register</a>
 </div>
-<h2>Not registered yet? You can do this right now: </h2>
-<a routerLink="/registration">Register</a>
+<ng-template #successfulLogin>
+  Congrats! Your login and password are correct. You can go on <a routerLink="/forms"> forms page </a> right now.
+</ng-template>
