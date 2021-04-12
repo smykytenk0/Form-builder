@@ -5,7 +5,7 @@ import {AppComponent} from "./app.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginFormComponent } from './login-form/login-form.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store';
+import { reducers} from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
@@ -31,7 +31,6 @@ const appRoutes: Routes = [
     DragDropModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     RouterModule.forRoot(appRoutes)
   ],

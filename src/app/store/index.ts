@@ -1,20 +1,13 @@
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
-} from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { ActionReducerMap} from '@ngrx/store';
+import {ElementStyles} from "./interfaces";
+import {ElementsStyleReducer} from "./element-styles.reducer";
 
 
-export interface AppState {
-
+export interface State {
+  defaultElementStyles: ElementStyles
 }
 
-export const reducers: ActionReducerMap<AppState> = {
-
+export const reducers: ActionReducerMap<State> = {
+  defaultElementStyles: ElementsStyleReducer
 };
 
-
-export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
