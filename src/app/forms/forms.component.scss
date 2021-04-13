@@ -1,91 +1,10 @@
 .form-wrapper{
   display: flex;
   height: 97vh;
-  border: 1px solid black;
 }
 
-app-acordion-section{
+.section{
   width: 33.33vw;
-  border-right: 1px solid black;
-
-}
-
-.example-box {
-  width: 200px;
-  height: 200px;
-  border: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  cursor: move;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.example-boundary {
-  display: flex;
-  width: 66.67vw;
-  height: 97vh;
-  max-width: 100%;
-}
-
-.builder-section{
-  width: 33.33vw;
-  height: 97vh;
-  border-right: 1px solid black;
-}
-
-.elements-section{
-  width:33.33vw;
-}
-
-.btn{
-  border-radius: 20px;
-  outline: none;
   border: 1px solid black;
-  width: 75px;
-  height: 35px;
-  background-color: white;
-  color: black;
-  cursor: pointer;
-  margin: 10px 20px;
 }
 
-.checkbox{
-  margin: 10px 20px;
-  font-size: 16px;
-}
-
-.input{
-  margin: 10px 20px;
-  border-radius: 20px;
-  border: 1px solid black;
-  outline: none;
-  width: 450px;
-  height: 35px;
-  padding-left: 20px;
-  font-size: 20px;
-}
-
-.label{
-  margin: 10px 20px;
-  font-size: 16px;
-}
-
-.select{
-  margin: 10px 20px;
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 100px;
-  height: 35px;
-  padding-left: 10px;
-  outline: none;
-}
-
-.textarea{
-  margin: 10px 20px;
-  border-radius: 20px;
-  width: 430px;
-  height: 150px;
-  padding: 20px;
-  outline: none;
-}

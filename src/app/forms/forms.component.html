@@ -2,32 +2,21 @@
   <a routerLink="/login">Logout</a>
 </div>
 <div class="form-wrapper">
-  <app-acordion-section class="accordion-section"></app-acordion-section>
-  <div class="example-boundary">
-    <div class="builder-section">Builder Section!!!</div>
-    <div class="elements-section">
-      <div cdkDragBoundary=".example-boundary" cdkDrag>
-        <button class="btn">Button</button>
-      </div>
-      <div cdkDragBoundary=".example-boundary" cdkDrag class="checkbox">
-        <input type="checkbox" id="checkbox">
-        <label for="checkbox">Checkbox</label>
-      </div>
-      <div cdkDragBoundary=".example-boundary" cdkDrag>
-        <input class="input">
-      </div>
-      <div cdkDragBoundary=".example-boundary" cdkDrag>
-        <label class="label">Label</label>
-      </div>
-      <div cdkDragBoundary=".example-boundary" cdkDrag>
-        <select class="select">
-          <option>Option 1</option>
-          <option>Option 2</option>
-        </select>
-      </div>
-      <div cdkDragBoundary=".example-boundary" cdkDrag>
-        <textarea class="textarea">Textarea</textarea>
-      </div>
-    </div>
+  <app-acordion-section class="section"></app-acordion-section>
+  <div class="section" #container
+    cdkDropList
+    #dropList="cdkDropList"
+    [cdkDropListData]="dropArray"
+    [cdkDropListConnectedTo]="[dragList]"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of dropArray" cdkDrag>{{item}}</div>
+  </div>
+  <div class="section" #clone
+    cdkDropList
+    #dragList="cdkDropList"
+    [cdkDropListData]="dragArray"
+    [cdkDropListConnectedTo]="[dropList]"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of dragArray" cdkDrag>{{item}}</div>
   </div>
 </div>
