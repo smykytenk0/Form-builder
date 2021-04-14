@@ -4,19 +4,22 @@
 <div class="form-wrapper">
   <app-acordion-section class="section"></app-acordion-section>
   <div class="section" #container
-    cdkDropList
-    #dropList="cdkDropList"
-    [cdkDropListData]="dropArray"
-    [cdkDropListConnectedTo]="[dragList]"
-    (cdkDropListDropped)="drop($event)">
+       cdkDropList
+       #dropList="cdkDropList"
+       [cdkDropListData]="dropArray"
+       [cdkDropListConnectedTo]="[dragList]"
+       (cdkDropListDropped)="drop($event)">
     <div class="example-box" *ngFor="let item of dropArray" cdkDrag>{{item}}</div>
   </div>
-  <div class="section" #clone
-    cdkDropList
-    #dragList="cdkDropList"
-    [cdkDropListData]="dragArray"
-    [cdkDropListConnectedTo]="[dropList]"
-    (cdkDropListDropped)="drop($event)">
+  <div class="section"
+       cdkDropList
+       #dragList="cdkDropList"
+       [cdkDropListData]="dragArray"
+       [cdkDropListConnectedTo]="[dropList]"
+       (cdkDropListDropped)="drop($event)">
     <div class="example-box" *ngFor="let item of dragArray" cdkDrag>{{item}}</div>
+    <h1>Elements:</h1>
+    <template #elemContainer>
+    </template>
   </div>
 </div>

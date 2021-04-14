@@ -1,8 +1,8 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver,
-  TemplateRef,
+  ComponentFactoryResolver, OnInit,
+  TemplateRef, Type,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -13,6 +13,7 @@ import {InputComponent} from "../elements/input.component";
 import {LabelComponent} from "../elements/label.component";
 import {SelectComponent} from "../elements/select.component";
 import {TextareaComponent} from "../elements/textarea.component";
+import {CustomComponent} from "../store/interfaces";
 
 
 
@@ -21,12 +22,22 @@ import {TextareaComponent} from "../elements/textarea.component";
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss']
 })
-export class FormsComponent  {
-  @ViewChild('elemContainer', { read: ViewContainerRef }) elemContainer;
-  dragArray = ['hello', 'my', 'name', 'is', 'Sasha'];
+export class FormsComponent  implements  AfterViewInit{
+  @ViewChild('elemContainer', { read: ViewContainerRef }) entry:ViewContainerRef;
+  dragArray = [];
   dropArray = [];
+  components = [];
 
-  constructor(private ComponentFactoryResolver:ComponentFactoryResolver){}
+  ngAfterViewInit(): void {
+    this.createElement<CheckboxComponent>(CheckboxComponent);
+    this.createElement<ButtonComponent>(ButtonComponent);
+    this.createElement<InputComponent>(InputComponent);
+    this.createElement<LabelComponent>(LabelComponent);
+    this.createElement<SelectComponent>(SelectComponent);
+    this.createElement<TextareaComponent>(TextareaComponent);
+    }
+
+  constructor(private resolver:ComponentFactoryResolver){}
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -39,4 +50,9 @@ export class FormsComponent  {
     }
   }
 
+  createElement<T>(component: Type<T>){
+    const factory = this.resolver.resolveComponentFactory(component);
+    this.components.push(factory);
+    this.entry.createComponent(factory);
+  }
 }

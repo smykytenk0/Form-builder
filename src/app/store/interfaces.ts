@@ -14,3 +14,7 @@ export interface ElementStyles {
   elements?:[]
 }
 
+export interface CustomComponent {
+  id: string,
+}
+

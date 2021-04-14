@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {Store} from "@ngrx/store";
-import {ElementStyles} from "../store/interfaces";
+import {CustomComponent, ElementStyles} from "../store/interfaces";
 import {Observable} from "rxjs";
 import {getCheckboxStylesSelector} from "../store/element-styles.reducer";
 
@@ -12,16 +12,6 @@ import {getCheckboxStylesSelector} from "../store/element-styles.reducer";
   </div>`
 })
 
-export class CheckboxComponent implements OnInit{
-  @Input() title = 'Checkbox';
-  @Input() elementStyles$: Observable<any>;
-  @Input() id = '';
-
-  defaultStyles$: Observable<any>;
-  constructor(private store: Store<ElementStyles>) {
-  }
-  ngOnInit(): void {
-    this.defaultStyles$ = this.store.select(getCheckboxStylesSelector);
-    this.defaultStyles$.subscribe(data=>this.elementStyles$ = data);
-  }
+export class CheckboxComponent implements CustomComponent{
+  id = 'checkbox';
 }

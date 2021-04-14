@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <div class="item-name">
     <div *ngIf="!activeItem else inputTemplate" (dblclick)="activeItem=!activeItem">Title</div>
-    <button type = "button" (click)="showStyles=!showStyles" *ngIf="!showStyles else buttonUp">&#5167;</button>
+    <button type = "button" (click)="showStyles=!showStyles" *ngIf="!showStyles else buttonUp" class="btn">&#5167;</button>
   </div>
   <div class="item-styles" *ngIf="showStyles">Showstyles</div>
   <ng-template #inputTemplate>
@@ -9,7 +9,7 @@
     <button (click)="activeItem=!activeItem">Apply Changes</button>
   </ng-template>
   <ng-template #buttonUp>
-    <button type = "button" (click)="showStyles=!showStyles">&#5169;</button>
+    <button type = "button" (click)="showStyles=!showStyles" class="btn">&#5169;</button>
   </ng-template>
 </form>
 
