@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {initialState} from "../../store/element-styles.reducer";
 
 @Component({
   selector: 'app-label',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./label.component.scss']
 })
 export class LabelComponent implements OnInit {
+  @Input() labelStyles=initialState.labelStyles
 
   constructor() { }
 

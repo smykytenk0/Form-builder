@@ -42,7 +42,7 @@
          (cdkDropListDropped)="drop($event)">
     <div *ngFor="let item of dragArray" cdkDrag>
       <div [ngSwitch]="item">
-        <div *ngSwitchCase="'button'"><app-button></app-button></div>
+        <div *ngSwitchCase="'button'" ><app-button ></app-button></div>
         <div *ngSwitchCase="'checkbox'"><app-checkbox></app-checkbox></div>
         <div *ngSwitchCase="'input'"><app-input></app-input></div>
         <div *ngSwitchCase="'label'"><app-label></app-label></div>

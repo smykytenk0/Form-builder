@@ -35,6 +35,7 @@ export class FormsComponent implements AfterViewInit{
 
     this.domPortal =  new DomPortal(this.comp3);
     this.virtualPortalOutlet3.attach(this.domPortal);
+    console.log(this.dropArray)
   }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

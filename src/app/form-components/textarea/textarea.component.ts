@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {initialState} from "../../store/element-styles.reducer";
 
 @Component({
   selector: 'app-textarea',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./textarea.component.scss']
 })
 export class TextareaComponent implements OnInit {
+  @Input() textareaStyles=initialState.textareaStyles
 
   constructor() { }
 
