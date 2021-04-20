@@ -1,6 +1,6 @@
-import {Action, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
+import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
 import {ElementStyles} from "./interfaces";
-import {ElementStylesActions} from "./element-styles.actions";
+import {StylesActions} from "./styles.actions";
 
 export const initialState: ElementStyles ={
   btnStyles: {
@@ -50,12 +50,20 @@ export const initialState: ElementStyles ={
     outline: 'none'
   },
   elements:[],
+  generalStyle:{
+    backgroundColor: '#f5ff85 ',
+    border: '3px solid red',
+    width: '99%',
+    height: '90vh',
+    borderRadius: '20px'
+  }
 } ;
 
 export const ElementsStyleReducer = createReducer(
   initialState,
-  on(ElementStylesActions.setElementStyle, ()=>initialState),
-  on(ElementStylesActions.addNewElement, ()=>initialState)
+  on(StylesActions.setElementStyle, ()=>initialState),
+  on(StylesActions.setGeneralStyle, ()=>initialState),
+  on(StylesActions.addNewElement, ()=>initialState)
 );
 
 export const defaultStylesSelector = createFeatureSelector<ElementStyles>('defaultElementStyles');
@@ -65,4 +73,3 @@ export const getInputStylesSelector = createSelector(defaultStylesSelector, stat
 export const getLabelStylesSelector = createSelector(defaultStylesSelector, state=>state.labelStyles);
 export const getSelectStylesSelector = createSelector(defaultStylesSelector, state=>state.selectStyles);
 export const getTextareaStylesSelector = createSelector(defaultStylesSelector, state=>state.textareaStyles);
-export const getNewElementsArraySelector = createSelector(defaultStylesSelector, state => state.elements);

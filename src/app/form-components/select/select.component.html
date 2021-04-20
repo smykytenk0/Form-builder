@@ -1,4 +1,3 @@
 <select [ngStyle]="selectStyles">
-  <option>Option1</option>
-  <option>Option2</option>
+    <option *ngFor="let option of options">{{option}}</option>
 </select>

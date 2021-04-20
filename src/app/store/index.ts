@@ -1,6 +1,6 @@
 import { ActionReducerMap} from '@ngrx/store';
 import {ElementStyles} from "./interfaces";
-import {ElementsStyleReducer} from "./element-styles.reducer";
+import {ElementsStyleReducer} from "./styles.reducer";
 
 
 export interface State {

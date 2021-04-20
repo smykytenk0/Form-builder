@@ -1,9 +1,16 @@
 <form [formGroup]="form">
   <div class="item-name">
-    <div *ngIf="!activeItem else inputTemplate" (dblclick)="activeItem=!activeItem">Title</div>
+    <div *ngIf="!activeItem else inputTemplate" (dblclick)="activeItem=!activeItem">{{title}} styles</div>
     <button type = "button" (click)="showStyles=!showStyles" *ngIf="!showStyles else buttonUp" class="btn">&#5167;</button>
   </div>
-  <div class="item-styles" *ngIf="showStyles">Showstyles</div>
+  <div class="item-styles" *ngIf="showStyles">
+    <div *ngFor="let style of keys">
+      <div>
+        <label id="{{style}}"> {{style}}:</label>
+      </div>
+      <input>
+    </div>
+  </div>
   <ng-template #inputTemplate>
     <input formControlName="title">
     <button (click)="activeItem=!activeItem">Apply Changes</button>

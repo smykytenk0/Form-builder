@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {initialState} from "../../store/element-styles.reducer";
+import {initialState} from "../../store/styles.reducer";
 
 @Component({
   selector: 'app-textarea',
@@ -7,7 +7,8 @@ import {initialState} from "../../store/element-styles.reducer";
   styleUrls: ['./textarea.component.scss']
 })
 export class TextareaComponent implements OnInit {
-  @Input() textareaStyles=initialState.textareaStyles
+  @Input() textareaStyles=initialState.textareaStyles;
+  @Input() placeholder = 'some text here...';
 
   constructor() { }
 

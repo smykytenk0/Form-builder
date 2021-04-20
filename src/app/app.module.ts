@@ -10,7 +10,6 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import {RouterModule, Routes} from "@angular/router";
 import { FormsComponent } from './forms/forms.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import { AccordionSectionComponent } from './accordion-section/accordion-section.component';
 import { AccordionBlockComponent } from './accordion-block/accordion-block.component';
 import {PortalModule} from "@angular/cdk/portal";
 import { ButtonComponent } from './form-components/button/button.component';
@@ -18,7 +17,8 @@ import { CheckboxComponent } from './form-components/checkbox/checkbox.component
 import { InputComponent } from './form-components/input/input.component';
 import { LabelComponent } from './form-components/label/label.component';
 import { SelectComponent } from './form-components/select/select.component';
-import { TextareaComponent } from './form-components/textarea/textarea.component';
+import {TextareaComponent} from "./form-components/textarea/textarea.component";
+import { GeneralStylesComponent } from './general-styles/general-styles.component';
 
 
 const appRoutes: Routes = [
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, AccordionSectionComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, TextareaComponent],
+  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, GeneralStylesComponent],
   imports: [
     BrowserModule,
     DragDropModule,

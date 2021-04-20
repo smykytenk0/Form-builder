@@ -4,6 +4,7 @@ export interface User {
   password: string
 }
 
+
 export interface ElementStyles {
   btnStyles?:{[key: string]: string},
   checkboxStyles?:{[key: string]: string},
@@ -11,7 +12,8 @@ export interface ElementStyles {
   labelStyles?:{[key: string]: string},
   selectStyles?:{[key: string]: string},
   textareaStyles?:{[key: string]: string},
-  elements?:[]
+  elements?:[],
+  generalStyle:{[key:string]:string}
 }
 
 export interface CustomComponent {

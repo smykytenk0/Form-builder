@@ -13,7 +13,13 @@
   </div>
 </div>
 
-<div #comp2>
+<div #comp1 class="portal-outlet">
+  <app-general-styles></app-general-styles>
+  <div *ngFor="let item of dropArray">
+      <app-acordion-block [title]="item[0].toUpperCase() + item.slice(1)" [keys]="styleArray[0]" ></app-acordion-block>
+  </div>
+</div>
+<div [formGroup]="form" #comp2 class="portal" >
   <h3>Builder section</h3>
   <div cdkDropList
        #dropList="cdkDropList"
@@ -21,19 +27,33 @@
        [cdkDropListConnectedTo]="[dragList]"
        (cdkDropListDropped)="drop($event)">
     <div>Put your elements here:</div>
-    <div *ngFor="let item of dropArray" cdkDrag>
-      <div [ngSwitch]="item">
-        <div *ngSwitchCase="'button'"><app-button></app-button></div>
-        <div *ngSwitchCase="'checkbox'"><app-checkbox></app-checkbox></div>
-        <div *ngSwitchCase="'input'"><app-input></app-input></div>
-        <div *ngSwitchCase="'label'"><app-label></app-label></div>
-        <div *ngSwitchCase="'select'"><app-select></app-select></div>
-        <div *ngSwitchCase="'textarea'"><app-textarea></app-textarea></div>
+    <div class="builder" [ngStyle]="generalStyle">
+      <div *ngFor="let item of dropArray" cdkDrag>
+      <div [ngSwitch]="item.slice(0,-2)">
+        <div *ngSwitchCase="'button'">
+          <app-button></app-button>
+        </div>
+        <div *ngSwitchCase="'checkbox'">
+          <app-checkbox></app-checkbox>
+        </div>
+        <div *ngSwitchCase="'input'">
+          <app-input></app-input>
+        </div>
+        <div *ngSwitchCase="'label'">
+          <app-label></app-label>
+        </div>
+        <div *ngSwitchCase="'select'">
+          <app-select></app-select>
+        </div>
+        <div *ngSwitchCase="'textarea'">
+          <app-textarea></app-textarea>
+        </div>
       </div>
+    </div>
     </div>
   </div>
 </div>
-<div #comp3>
+<div #comp3 class="portal">
   <h3>Element section</h3>
   <div cdkDropList
          #dragList="cdkDropList"
@@ -42,7 +62,7 @@
          (cdkDropListDropped)="drop($event)">
     <div *ngFor="let item of dragArray" cdkDrag>
       <div [ngSwitch]="item">
-        <div *ngSwitchCase="'button'" ><app-button ></app-button></div>
+        <div *ngSwitchCase="'button'" ><app-button></app-button></div>
         <div *ngSwitchCase="'checkbox'"><app-checkbox></app-checkbox></div>
         <div *ngSwitchCase="'input'"><app-input></app-input></div>
         <div *ngSwitchCase="'label'"><app-label></app-label></div>

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {initialState} from "../../store/element-styles.reducer";
+import {initialState} from "../../store/styles.reducer";
 
 @Component({
   selector: 'app-button',
@@ -8,6 +8,7 @@ import {initialState} from "../../store/element-styles.reducer";
 })
 export class ButtonComponent implements OnInit {
   @Input() btnStyles = initialState.btnStyles;
+  @Input() buttonName = 'Button';
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-import {createAction} from "@ngrx/store";
+import {createAction, Action} from "@ngrx/store";
 
 const page = '[Form Page]';
 
