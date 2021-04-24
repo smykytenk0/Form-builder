@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {StoreModule} from "@ngrx/store";
+import {ElementsStyleReducer} from "./store/styles.reducer";
 
 import {AppComponent} from "./app.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -33,11 +35,13 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, GeneralStylesComponent],
   imports: [
+    StoreModule.forRoot({elementStylesReducer: ElementsStyleReducer}),
     BrowserModule,
     DragDropModule,
     FormsModule,
     ReactiveFormsModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+
     RouterModule.forRoot(appRoutes),
     PortalModule
   ],

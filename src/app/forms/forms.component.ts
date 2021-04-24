@@ -1,14 +1,21 @@
-import {CdkPortalOutlet, ComponentPortal, DomPortal, Portal, TemplatePortal} from '@angular/cdk/portal';
+import {CdkPortalOutlet, DomPortal} from '@angular/cdk/portal';
 import {
   AfterViewInit,
   Component,
   ViewChild,
-  ViewContainerRef,
   ElementRef, Input, OnInit
 } from '@angular/core';
 import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
-import {initialState} from "../store/styles.reducer";
+import {
+  getBtnStylesSelector,
+  getCheckboxStylesSelector, getGeneralStylesSelector,
+  getInputStylesSelector, getLabelStylesSelector, getSelectStylesSelector, getTextareaStylesSelector,
+  initialState
+} from "../store/styles.reducer";
 import {FormGroup} from "@angular/forms";
+import {select, Store} from "@ngrx/store";
+import {StylesActions} from "../store/styles.actions";
+import {Observable, ObservedValuesFromArray} from "rxjs";
 
 @Component({
   selector: 'app-forms',
@@ -22,30 +29,50 @@ export class FormsComponent implements AfterViewInit, OnInit{
   @ViewChild('comp1') comp1:ElementRef;
   @ViewChild('comp2') comp2:ElementRef;
   @ViewChild('comp3') comp3:ElementRef;
-  @Input() generalStyle = initialState.generalStyle;
+  generalStyle$: Observable<{[key:string]:string}>;
+  btnStyles$: Observable<{[key:string]:string}>;
+  checkboxStyles$: Observable<{[key:string]:string}>;
+  inputStyles$: Observable<{[key:string]:string}>;
+  labelStyles$: Observable<{[key:string]:string}>;
+  selectStyles$: Observable<{[key:string]:string}>;
+  textareaStyles$: Observable<{[key:string]:string}>;
+  styleType$: Observable<{[key:string]:string}>;
+  keys =[];
 
   dragArray = ['button', 'checkbox', 'input', 'label', 'select', 'textarea'];
   dropArray = [];
   styleType = {};
-  styleArray =[];
 
   domPortal:DomPortal<any>;
   form: FormGroup;
 
+  constructor(private store: Store) {
+    this.btnStyles$ = this.store.pipe(select(getBtnStylesSelector));
+    this.checkboxStyles$ = this.store.pipe(select(getCheckboxStylesSelector));
+    this.generalStyle$ = this.store.pipe(select(getGeneralStylesSelector));
+    this.inputStyles$ = this.store.pipe(select(getInputStylesSelector));
+    this.labelStyles$ = this.store.pipe(select(getLabelStylesSelector));
+    this.selectStyles$ = this.store.pipe(select(getSelectStylesSelector));
+    this.textareaStyles$ = this.store.pipe(select(getTextareaStylesSelector));
+  }
+
   ngOnInit(): void {
     this.form = new FormGroup({});
   }
+
   ngAfterViewInit(): void {
     this.domPortal = new DomPortal(this.comp1);
     this.virtualPortalOutlet1.attach(this.domPortal);
 
-    this.domPortal =  new DomPortal(this.comp2);
+    this.domPortal = new DomPortal(this.comp2);
     this.virtualPortalOutlet2.attach(this.domPortal);
 
-    this.domPortal =  new DomPortal(this.comp3);
+    this.domPortal = new DomPortal(this.comp3);
     this.virtualPortalOutlet3.attach(this.domPortal);
-    console.log(this.dropArray)
+
   }
+
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -54,11 +81,11 @@ export class FormsComponent implements AfterViewInit, OnInit{
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-      this.dropArray[event.currentIndex] = this.dropArray[event.currentIndex] + '_' + event.currentIndex;
+      this.dropArray[event.currentIndex] = this.dropArray[event.currentIndex] + '_' + this.dropArray.length;
 
-      switch (event.container.data[event.currentIndex].split('_')[0]) {
+      switch (event.container.data[event.currentIndex].slice(0, -2)) {
         case 'button':
-          this.styleType = initialState.btnStyles;
+          this.styleType = this.store.pipe(select(getBtnStylesSelector));
           break;
         case 'checkbox':
           this.styleType = initialState.checkboxStyles;
@@ -76,9 +103,8 @@ export class FormsComponent implements AfterViewInit, OnInit{
           this.styleType = initialState.textareaStyles;
           break
       }
+      this.keys = Object.keys(this.styleType);
     }
-    this.styleArray.push(Object.keys(this.styleType));
-    console.log(this.styleArray);
   }
 }
 

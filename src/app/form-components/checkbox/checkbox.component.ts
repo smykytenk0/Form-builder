@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {initialState} from "../../store/styles.reducer";
 
 @Component({
   selector: 'app-checkbox',
@@ -7,8 +6,11 @@ import {initialState} from "../../store/styles.reducer";
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent implements OnInit {
-  @Input() checkboxStyles = initialState.checkboxStyles;
+  @Input() set checkboxStyles(newStyles: {[key: string]: string}){
+    this.styles = newStyles;
+  }
   @Input() label = 'Label';
+  styles: {[key:string]:string};
 
   constructor() { }
 

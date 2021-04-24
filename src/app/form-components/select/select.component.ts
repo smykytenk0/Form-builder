@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {initialState} from "../../store/styles.reducer";
 
 @Component({
   selector: 'app-select',
@@ -7,10 +6,13 @@ import {initialState} from "../../store/styles.reducer";
   styleUrls: ['./select.component.scss']
 })
 export class SelectComponent implements OnInit {
-  @Input() selectStyles=initialState.selectStyles;
+  @Input() set selectStyles(newStyles:{[key:string]:string}){
+    this.styles = newStyles
+  }
   @Input() select = 'select';
   @Input() options = ['option1', 'option2'];
 
+  styles:{[key:string]:string};
   constructor() { }
 
   ngOnInit(): void {

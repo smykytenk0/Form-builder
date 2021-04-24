@@ -9,7 +9,7 @@ import {User} from "../app.component";
 })
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
-  isSubmited: boolean = false;
+  isSubmited = false;
   constructor() {
   }
 
@@ -22,6 +22,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     const formData = {...this.form.value};
+    console.log(formData);
     if(formData.email == 'smth@g' && formData.password == '123456'){
       this.isSubmited = !this.isSubmited;
     }

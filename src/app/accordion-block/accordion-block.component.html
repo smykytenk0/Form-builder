@@ -4,12 +4,19 @@
     <button type = "button" (click)="showStyles=!showStyles" *ngIf="!showStyles else buttonUp" class="btn">&#5167;</button>
   </div>
   <div class="item-styles" *ngIf="showStyles">
-    <div *ngFor="let style of keys">
+    <form [formGroup]="elementForm">
       <div>
-        <label id="{{style}}"> {{style}}:</label>
+        <label id="elementName">Element Name</label>
       </div>
       <input>
-    </div>
+      <div *ngFor="let style of keys">
+        <div>
+          <label id="{{style}}"> {{style}}:</label>
+        </div>
+        <input >
+      </div>
+    </form>
+    <button type ='submit' (click)="enterChanges(elementForm.value)">Apply Changes</button>
   </div>
   <ng-template #inputTemplate>
     <input formControlName="title">

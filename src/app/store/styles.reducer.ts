@@ -61,15 +61,27 @@ export const initialState: ElementStyles ={
 
 export const ElementsStyleReducer = createReducer(
   initialState,
-  on(StylesActions.setElementStyle, ()=>initialState),
-  on(StylesActions.setGeneralStyle, ()=>initialState),
-  on(StylesActions.addNewElement, ()=>initialState)
+  on(StylesActions.setElementStyle, (state, {payload})=>{console.log(payload); return state;}),
+  on(StylesActions.setGeneralStyle, (state, {payload})=>{
+    return ({
+    ...state,
+    generalStyle:{...state.generalStyle, ...payload}
+  })}),
+  on(StylesActions.addNewElementStyle, (state, {payload})=>{
+    console.log(state);
+    console.log(payload);
+    return({
+      ...state,
+      elements:{...state.elements, ...payload}
+    })
+  })
 );
 
-export const defaultStylesSelector = createFeatureSelector<ElementStyles>('defaultElementStyles');
+export const defaultStylesSelector = createFeatureSelector<ElementStyles>('elementStylesReducer');
 export const getBtnStylesSelector = createSelector(defaultStylesSelector, state=>state.btnStyles);
 export const getCheckboxStylesSelector = createSelector(defaultStylesSelector, state=>state.checkboxStyles);
 export const getInputStylesSelector = createSelector(defaultStylesSelector, state=>state.inputStyles);
 export const getLabelStylesSelector = createSelector(defaultStylesSelector, state=>state.labelStyles);
 export const getSelectStylesSelector = createSelector(defaultStylesSelector, state=>state.selectStyles);
 export const getTextareaStylesSelector = createSelector(defaultStylesSelector, state=>state.textareaStyles);
+export const getGeneralStylesSelector = createSelector(defaultStylesSelector, state=>state.generalStyle);

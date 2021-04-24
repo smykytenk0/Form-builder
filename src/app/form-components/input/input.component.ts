@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {initialState} from "../../store/styles.reducer";
 
 @Component({
   selector: 'app-input',
@@ -7,8 +6,11 @@ import {initialState} from "../../store/styles.reducer";
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
-  @Input() inputStyles=initialState.inputStyles;
-  @Input() placeholder = 'some text here...';
+  @Input() set inputStyles(newStyles: {[key:string]:string}){
+    this.styles = newStyles;
+  }
+  @Input() placeholder = 'Text';
+  styles: {[key:string]:string};
 
   constructor() { }
 
