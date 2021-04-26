@@ -21,6 +21,7 @@ import { LabelComponent } from './form-components/label/label.component';
 import { SelectComponent } from './form-components/select/select.component';
 import {TextareaComponent} from "./form-components/textarea/textarea.component";
 import { GeneralStylesComponent } from './general-styles/general-styles.component';
+import { SwitchComponent } from './switch/switch.component';
 
 
 const appRoutes: Routes = [
@@ -33,7 +34,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, GeneralStylesComponent],
+  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, GeneralStylesComponent, SwitchComponent],
   imports: [
     StoreModule.forRoot({elementStylesReducer: ElementsStyleReducer}),
     BrowserModule,

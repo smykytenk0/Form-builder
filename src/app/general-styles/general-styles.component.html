@@ -1,0 +1,21 @@
+<script src="general-styles.component.ts"></script>
+<div class="general-styles" [ngStyle]="generalFormData$">
+  <div class="title" (click)="showStyles=!showStyles">
+    <div> General styles </div>
+    <button  *ngIf="!showStyles; else buttonUp" class="arrow-btn">&#5167;</button>
+  </div>
+  <div *ngIf="showStyles" class="form-wrapper">
+    <form [formGroup]="generalForm">
+      <div *ngFor="let item of keys">
+        <label id="{{item}}">{{item}}: </label>
+        <div>
+          <input formControlName="{{item}}">
+        </div>
+      </div>
+      <button type="submit" (click)="enterGeneralStyles(generalForm.value)">Confirm Changes</button>
+    </form>
+  </div>
+  <ng-template #buttonUp>
+    <button (click)="showStyles=!showStyles" class="arrow-btn">&#5169;</button>
+  </ng-template>
+</div>

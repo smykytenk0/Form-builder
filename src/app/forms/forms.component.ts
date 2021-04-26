@@ -3,19 +3,18 @@ import {
   AfterViewInit,
   Component,
   ViewChild,
-  ElementRef, Input, OnInit
+  ElementRef, OnInit
 } from '@angular/core';
 import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
 import {
   getBtnStylesSelector,
   getCheckboxStylesSelector, getGeneralStylesSelector,
-  getInputStylesSelector, getLabelStylesSelector, getSelectStylesSelector, getTextareaStylesSelector,
-  initialState
+  getInputStylesSelector, getLabelStylesSelector, getSelectStylesSelector, getTextareaStylesSelector
 } from "../store/styles.reducer";
 import {FormGroup} from "@angular/forms";
 import {select, Store} from "@ngrx/store";
-import {StylesActions} from "../store/styles.actions";
-import {Observable, ObservedValuesFromArray} from "rxjs";
+import {Observable } from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-forms',
@@ -36,7 +35,6 @@ export class FormsComponent implements AfterViewInit, OnInit{
   labelStyles$: Observable<{[key:string]:string}>;
   selectStyles$: Observable<{[key:string]:string}>;
   textareaStyles$: Observable<{[key:string]:string}>;
-  styleType$: Observable<{[key:string]:string}>;
   keys =[];
 
   dragArray = ['button', 'checkbox', 'input', 'label', 'select', 'textarea'];
@@ -50,7 +48,7 @@ export class FormsComponent implements AfterViewInit, OnInit{
     this.btnStyles$ = this.store.pipe(select(getBtnStylesSelector));
     this.checkboxStyles$ = this.store.pipe(select(getCheckboxStylesSelector));
     this.generalStyle$ = this.store.pipe(select(getGeneralStylesSelector));
-    this.inputStyles$ = this.store.pipe(select(getInputStylesSelector));
+    this.inputStyles$ = this.store.pipe(select(getInputStylesSelector),tap(console.log));
     this.labelStyles$ = this.store.pipe(select(getLabelStylesSelector));
     this.selectStyles$ = this.store.pipe(select(getSelectStylesSelector));
     this.textareaStyles$ = this.store.pipe(select(getTextareaStylesSelector));
@@ -88,19 +86,19 @@ export class FormsComponent implements AfterViewInit, OnInit{
           this.styleType = this.store.pipe(select(getBtnStylesSelector));
           break;
         case 'checkbox':
-          this.styleType = initialState.checkboxStyles;
+          this.styleType = this.store.pipe(select(getCheckboxStylesSelector));
           break;
         case 'input':
-          this.styleType = initialState.inputStyles;
+          this.styleType = this.store.pipe(select(getInputStylesSelector));
           break;
         case 'label':
-          this.styleType = initialState.labelStyles;
+          this.styleType = this.store.pipe(select(getLabelStylesSelector));
           break;
         case 'select':
-          this.styleType = initialState.selectStyles;
+          this.styleType = this.store.pipe(select(getSelectStylesSelector));
           break;
         case 'textarea':
-          this.styleType = initialState.textareaStyles;
+          this.styleType = this.store.pipe(select(getTextareaStylesSelector));
           break
       }
       this.keys = Object.keys(this.styleType);

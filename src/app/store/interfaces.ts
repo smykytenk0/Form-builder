@@ -4,6 +4,16 @@ export interface User {
   password: string
 }
 
+export enum ElementType{
+  BTN = 'button',
+  CHECKBOX = 'checkbox',
+  INPUT = 'input',
+  LABEL = 'label',
+  SELECT = 'select',
+  TEXTAREA = 'textarea'
+}
+
+
 
 export interface ElementStyles {
   btnStyles?:{[key: string]: string},

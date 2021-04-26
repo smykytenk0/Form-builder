@@ -57,25 +57,64 @@ export const initialState: ElementStyles ={
     height: '90vh',
     borderRadius: '20px'
   }
-} ;
+};
 
 export const ElementsStyleReducer = createReducer(
   initialState,
   on(StylesActions.setElementStyle, (state, {payload})=>{console.log(payload); return state;}),
   on(StylesActions.setGeneralStyle, (state, {payload})=>{
     return ({
-    ...state,
-    generalStyle:{...state.generalStyle, ...payload}
-  })}),
+      ...state,
+      generalStyle:{...state.generalStyle, ...payload}
+    })}),
   on(StylesActions.addNewElementStyle, (state, {payload})=>{
-    console.log(state);
-    console.log(payload);
     return({
       ...state,
       elements:{...state.elements, ...payload}
     })
-  })
+  }),
+  on(StylesActions.setBtnStyle, (state, {payload})=>{
+    const newState = ({
+      ...state,
+      btnStyles:{...state.btnStyles, ...payload}
+    });
+    console.log(newState);
+    return newState;
+  }),
+  on(StylesActions.setInputStyle, (state, {payload})=>{
+    return({
+      ...state,
+      inputStyles:{...state.inputStyles, ...payload}
+    })
+  }),
+  on(StylesActions.setCheckboxStyle, (state, {payload})=>{
+    return({
+      ...state,
+      checkboxStyles:{...state.checkboxStyles, ...payload}
+    })
+  }),
+  on(StylesActions.setTextareaStyle, (state, {payload})=>{
+    return({
+      ...state,
+      textareaStyles:{...state.textareaStyles, ...payload}
+    })
+  }),
+  on(StylesActions.setSelectStyle, (state, {payload})=>{
+    return({
+      ...state,
+      selectStyles:{...state.selectStyles, ...payload}
+    })
+  }),
+  on(StylesActions.addNewElementStyle, (state, {payload})=>{
+    console.log(state);
+    return({
+      ...state,
+      elements:{...state.elements, ...payload}
+    })
+  }),
 );
+
+
 
 export const defaultStylesSelector = createFeatureSelector<ElementStyles>('elementStylesReducer');
 export const getBtnStylesSelector = createSelector(defaultStylesSelector, state=>state.btnStyles);
