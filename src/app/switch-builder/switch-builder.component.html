@@ -1,0 +1,8 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'button'" ><app-button  [buttonStyles]="styles$ | async"></app-button></div>
+  <div *ngSwitchCase="'checkbox'"><app-checkbox [checkboxStyles]="styles$ | async" ></app-checkbox></div>
+  <div *ngSwitchCase="'input'"><app-input [inputStyles]="styles$ | async"></app-input></div>
+  <div *ngSwitchCase="'label'"><app-label [labelStyles]="styles$ | async"></app-label></div>
+  <div *ngSwitchCase="'select'"><app-select [selectStyles]="styles$ | async"></app-select></div>
+  <div *ngSwitchCase="'textarea'"><app-textarea [styles]="styles$ | async"></app-textarea></div>
+</div>
