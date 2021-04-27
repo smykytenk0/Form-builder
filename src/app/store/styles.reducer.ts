@@ -1,9 +1,11 @@
 import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
 import {ElementStyles} from "./interfaces";
 import {StylesActions} from "./styles.actions";
+import {getTypeFromName} from "./helper";
+import {element} from "protractor";
 
 export const initialState: ElementStyles ={
-  btnStyles: {
+  buttonStyles: {
     borderRadius: "20px",
     outline: "none",
     border: '1px solid black',
@@ -12,7 +14,8 @@ export const initialState: ElementStyles ={
     backgroundColor: 'white',
     color: 'black',
     cursor: 'pointer',
-    margin: '10px 20px'
+    margin: '10px 20px',
+    name: 'casaaas',
   },
   checkboxStyles: {
     margin: '10px 20px',
@@ -49,8 +52,8 @@ export const initialState: ElementStyles ={
     padding: '20px',
     outline: 'none'
   },
-  elements:[],
-  generalStyle:{
+  elements: {},
+  generalStyles:{
     backgroundColor: '#f5ff85 ',
     border: '3px solid red',
     width: '99%',
@@ -61,66 +64,31 @@ export const initialState: ElementStyles ={
 
 export const ElementsStyleReducer = createReducer(
   initialState,
-  on(StylesActions.setElementStyle, (state, {payload})=>{console.log(payload); return state;}),
-  on(StylesActions.setGeneralStyle, (state, {payload})=>{
-    return ({
-      ...state,
-      generalStyle:{...state.generalStyle, ...payload}
-    })}),
-  on(StylesActions.addNewElementStyle, (state, {payload})=>{
-    return({
-      ...state,
-      elements:{...state.elements, ...payload}
-    })
+  on(StylesActions.addNewElementStyle, (state, {element})=>{
+    const type = getTypeFromName(element);
+    const typedStyles = state[`${type}Styles`];
+    return  {...state,elements: {...state.elements, [element]:typedStyles}};
   }),
-  on(StylesActions.setBtnStyle, (state, {payload})=>{
-    const newState = ({
-      ...state,
-      btnStyles:{...state.btnStyles, ...payload}
-    });
-    console.log(newState);
-    return newState;
-  }),
-  on(StylesActions.setInputStyle, (state, {payload})=>{
-    return({
-      ...state,
-      inputStyles:{...state.inputStyles, ...payload}
-    })
-  }),
-  on(StylesActions.setCheckboxStyle, (state, {payload})=>{
-    return({
-      ...state,
-      checkboxStyles:{...state.checkboxStyles, ...payload}
-    })
-  }),
-  on(StylesActions.setTextareaStyle, (state, {payload})=>{
-    return({
-      ...state,
-      textareaStyles:{...state.textareaStyles, ...payload}
-    })
-  }),
-  on(StylesActions.setSelectStyle, (state, {payload})=>{
-    return({
-      ...state,
-      selectStyles:{...state.selectStyles, ...payload}
-    })
-  }),
-  on(StylesActions.addNewElementStyle, (state, {payload})=>{
-    console.log(state);
-    return({
-      ...state,
-      elements:{...state.elements, ...payload}
-    })
+  on(StylesActions.setStylesByType,(state,{payload,element}) =>{
+    const type = getTypeFromName(element);
+    if(type === element) {
+      return {...state,[`${element}Styles`]:{...state[`${element}Styles`],...payload}};
+    }
+    return {...state,elements:{...state.elements,[element]:payload}};
   }),
 );
 
-
+export function getStylesBy(name: string) {
+  const type = getTypeFromName(name);
+  const key = `${type}Styles`;
+  return createSelector(defaultStylesSelector, state => {
+    const elementStyles = state.elements[name];
+    return elementStyles || state[key];
+  });
+}
 
 export const defaultStylesSelector = createFeatureSelector<ElementStyles>('elementStylesReducer');
-export const getBtnStylesSelector = createSelector(defaultStylesSelector, state=>state.btnStyles);
-export const getCheckboxStylesSelector = createSelector(defaultStylesSelector, state=>state.checkboxStyles);
-export const getInputStylesSelector = createSelector(defaultStylesSelector, state=>state.inputStyles);
-export const getLabelStylesSelector = createSelector(defaultStylesSelector, state=>state.labelStyles);
-export const getSelectStylesSelector = createSelector(defaultStylesSelector, state=>state.selectStyles);
-export const getTextareaStylesSelector = createSelector(defaultStylesSelector, state=>state.textareaStyles);
-export const getGeneralStylesSelector = createSelector(defaultStylesSelector, state=>state.generalStyle);
+export const getBtnStylesSelector = createSelector(defaultStylesSelector, state=>{
+  const {name,...clearStyles} =  state.buttonStyles;
+  return clearStyles;
+});

@@ -1,20 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {ComponentItem} from "../../store/component-item";
 
 @Component({
   selector: 'app-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss']
 })
-export class TextareaComponent implements OnInit {
-  @Input() set textareaStyles(newStyles:{[key:string]:string}){
-    this.styles = newStyles
-  }
+export class TextareaComponent implements ComponentItem {
   @Input() placeholder = 'some text here...';
-
-  styles:{[key:string]:string};
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() styles: { [p: string]: string };
 }

@@ -14,28 +14,9 @@
 </div>
 
 <div #comp1 class="portal-outlet">
-  <app-general-styles [styleObj]="generalStyle$ | async"></app-general-styles>
+  <app-switch item="general"></app-switch>
   <div *ngFor="let item of dropArray">
-    <div [ngSwitch]="item.slice(0,-2)">
-      <div *ngSwitchCase="'button'">
-        <app-acordion-block [title]="item[0].toUpperCase() + item.slice(1)" [styleObj]="btnStyles$ | async" [funcType]="'button'"></app-acordion-block>
-      </div>
-      <div *ngSwitchCase="'checkbox'">
-        <app-acordion-block [title]="item[0].toUpperCase() + item.slice(1)" [styleObj]="checkboxStyles$ | async" [funcType]="'checkbox'"></app-acordion-block>
-      </div>
-      <div *ngSwitchCase="'input'">
-        <app-acordion-block [title]="item[0].toUpperCase() + item.slice(1)" [styleObj]="inputStyles$ | async" [funcType]="'input'"></app-acordion-block>
-      </div>
-      <div *ngSwitchCase="'label'">
-        <app-acordion-block [title]="item[0].toUpperCase() + item.slice(1)" [styleObj]="labelStyles$ | async" [funcType]="'label'"></app-acordion-block>
-      </div>
-      <div *ngSwitchCase="'select'">
-        <app-acordion-block [title]="item[0].toUpperCase() + item.slice(1)" [styleObj]="selectStyles$ | async" [funcType]="'select'" ]></app-acordion-block>
-      </div>
-      <div *ngSwitchCase="'textarea'">
-        <app-acordion-block [title]="item[0].toUpperCase() + item.slice(1)" [styleObj]="textareaStyles$ | async" [funcType]="'textarea'"></app-acordion-block>
-      </div>
-    </div>
+    <app-switch [item]="item"></app-switch>
   </div>
 </div>
 <div [formGroup]="form" #comp2 class="portal" >
@@ -46,29 +27,10 @@
        [cdkDropListConnectedTo]="[dragList]"
        (cdkDropListDropped)="drop($event)">
     <div>Put your elements here:</div>
-    <div class="builder" [ngStyle]="generalStyle$ | async">
+    <div class="builder" [ngStyle]="getStylesByType('general') | async">
       <div *ngFor="let item of dropArray" cdkDrag>
-      <div [ngSwitch]="item.slice(0,-2)">
-        <div *ngSwitchCase="'button'">
-          <app-button [btnStyles]="btnStyles$ | async"></app-button>
-        </div>
-        <div *ngSwitchCase="'checkbox'">
-          <app-checkbox [checkboxStyles]="checkboxStyles$ | async"></app-checkbox>
-        </div>
-        <div *ngSwitchCase="'input'">
-          <app-input [inputStyles]="inputStyles$ | async"></app-input>
-        </div>
-        <div *ngSwitchCase="'label'">
-          <app-label [labelStyles]="labelStyles$ | async"></app-label>
-        </div>
-        <div *ngSwitchCase="'select'">
-          <app-select [selectStyles]="selectStyles$ | async"></app-select>
-        </div>
-        <div *ngSwitchCase="'textarea'">
-          <app-textarea [textareaStyles]="textareaStyles$ | async"></app-textarea>
-        </div>
+        <app-switch-builder [item]="item"></app-switch-builder>
       </div>
-    </div>
     </div>
   </div>
 </div>
@@ -80,14 +42,7 @@
          [cdkDropListConnectedTo]="[dropList]"
          (cdkDropListDropped)="drop($event)">
     <div *ngFor="let item of dragArray" cdkDrag>
-      <div [ngSwitch]="item">
-        <div *ngSwitchCase="'button'" ><app-button  [btnStyles]="btnStyles$ | async"></app-button></div>
-        <div *ngSwitchCase="'checkbox'"><app-checkbox [checkboxStyles]="checkboxStyles$ | async" ></app-checkbox></div>
-        <div *ngSwitchCase="'input'"><app-input [inputStyles]="inputStyles$ | async"></app-input></div>
-        <div *ngSwitchCase="'label'"><app-label [labelStyles]="labelStyles$ | async"></app-label></div>
-        <div *ngSwitchCase="'select'"><app-select [selectStyles]="selectStyles$ | async"></app-select></div>
-        <div *ngSwitchCase="'textarea'"><app-textarea [textareaStyles]="textareaStyles$ | async"></app-textarea></div>
-      </div>
+      <app-switch-builder [item]="item"></app-switch-builder>
     </div>
   </div>
 </div>

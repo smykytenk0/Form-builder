@@ -20,8 +20,8 @@ import { InputComponent } from './form-components/input/input.component';
 import { LabelComponent } from './form-components/label/label.component';
 import { SelectComponent } from './form-components/select/select.component';
 import {TextareaComponent} from "./form-components/textarea/textarea.component";
-import { GeneralStylesComponent } from './general-styles/general-styles.component';
-import { SwitchComponent } from './switch/switch.component';
+import { SwitchStylesComponent } from './switch-styles/switch-styles.component';
+import { SwitchBuilderComponent } from './switch-builder/switch-builder.component';
 
 
 const appRoutes: Routes = [
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, GeneralStylesComponent, SwitchComponent],
+  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, SwitchStylesComponent, SwitchBuilderComponent],
   imports: [
     StoreModule.forRoot({elementStylesReducer: ElementsStyleReducer}),
     BrowserModule,
