@@ -1,20 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ComponentItem} from "../../store/component-item";
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements OnInit {
-  @Input() set inputStyles(newStyles: {[key:string]:string}){
-    this.styles = newStyles;
-  }
+export class InputComponent implements ComponentItem {
+  @Input() styles: { [p: string]: string };
   @Input() placeholder = 'Text';
-  styles: {[key:string]:string};
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -1,19 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ComponentItem} from "../../store/component-item";
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent implements OnInit {
-  @Input() set buttonStyles(newStyles: {[key:string]:string}){
-    this.styles = newStyles;
-  }
+export class ButtonComponent implements ComponentItem {
+  @Input() styles: { [p: string]: string };
   @Input() buttonName = 'Button';
-  styles: {[key:string]:string};
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

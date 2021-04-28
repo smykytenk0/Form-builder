@@ -1,20 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ComponentItem} from "../../store/component-item";
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
 })
-export class CheckboxComponent implements OnInit {
-  @Input() set checkboxStyles(newStyles: {[key: string]: string}){
-    this.styles = newStyles;
-  }
+export class CheckboxComponent implements ComponentItem {
+  @Input() styles: { [p: string]: string };
   @Input() label = 'Label';
-  styles: {[key:string]:string};
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
