@@ -61,7 +61,7 @@ export class FormsComponent implements AfterViewInit, OnInit {
   }
 
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>): void {
     console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -78,5 +78,4 @@ export class FormsComponent implements AfterViewInit, OnInit {
     }
   }
 }
-
 
