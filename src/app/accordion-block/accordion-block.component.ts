@@ -30,7 +30,7 @@ export class AccordionBlockComponent implements OnInit {
     this.elementForm = new FormGroup(group);
   }
 
-  enterChanges(payload: { [key: string]: string }) {
+  enterChanges(payload: { [key: string]: string }): void {
     console.log(payload);
     console.log(this.title);
     this.store.dispatch(StylesActions.setStylesByType({payload,element: this.title}));
