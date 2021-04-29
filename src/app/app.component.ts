@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 export interface User {
   email: string
   password: string
-  id?: any
+  id?: type
 }
 
 @Component({
