@@ -15,8 +15,8 @@ export class AccordionBlockComponent implements OnInit {
   keys: string[];
 
   form: FormGroup = new FormGroup({});
-  activeItem = false;
-  showStyles = false;
+  activeItem: boolean;
+  showStyles: boolean;
   elementForm: FormGroup;
 
   constructor(private store: Store) {
