@@ -1,18 +1,53 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import {StoreModule} from "@ngrx/store";
+import {ElementsStyleReducer} from "./store/styles.reducer";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppComponent} from "./app.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LoginFormComponent } from './login-form/login-form.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import {RouterModule, Routes} from "@angular/router";
+import { FormsComponent } from './forms/forms.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import { AccordionBlockComponent } from './accordion-block/accordion-block.component';
+import {PortalModule} from "@angular/cdk/portal";
+import { ButtonComponent } from './form-components/button/button.component';
+import { CheckboxComponent } from './form-components/checkbox/checkbox.component';
+import { InputComponent } from './form-components/input/input.component';
+import { LabelComponent } from './form-components/label/label.component';
+import { SelectComponent } from './form-components/select/select.component';
+import {TextareaComponent} from "./form-components/textarea/textarea.component";
+import { SwitchStylesComponent } from './switch-styles/switch-styles.component';
+import { SwitchBuilderComponent } from './switch-builder/switch-builder.component';
+
+
+const appRoutes: Routes = [
+  {path:"login", component:LoginFormComponent},
+  {path:"registration", component:RegistrationFormComponent},
+  {path:"", component:LoginFormComponent},
+  {path:"forms", component: FormsComponent}
+
+];
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, SwitchStylesComponent, SwitchBuilderComponent],
   imports: [
+    StoreModule.forRoot({elementStylesReducer: ElementsStyleReducer}),
     BrowserModule,
-    AppRoutingModule
+    DragDropModule,
+    FormsModule,
+    ReactiveFormsModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+
+    RouterModule.forRoot(appRoutes),
+    PortalModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}

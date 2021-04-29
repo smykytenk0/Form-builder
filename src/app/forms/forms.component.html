@@ -1,0 +1,48 @@
+<div>
+  <a routerLink="/login">Logout</a>
+</div>
+<div class="example-portal-outlet">
+  <div class="portal-outlet">
+    <ng-container #accordionContainer cdkPortalOutlet></ng-container>
+  </div>
+  <div class="portal-outlet">
+    <ng-container #builderContainer cdkPortalOutlet></ng-container>
+  </div>
+  <div class="portal-outlet">
+    <ng-container #elementsContainer cdkPortalOutlet></ng-container>
+  </div>
+</div>
+
+<div #comp1 class="portal-outlet">
+  <app-switch item="general"></app-switch>
+  <div *ngFor="let item of dropArray">
+    <app-switch [item]="item"></app-switch>
+  </div>
+</div>
+<div [formGroup]="form" #comp2 class="portal" >
+  <h3>Builder section</h3>
+  <div cdkDropList
+       #dropList="cdkDropList"
+       [cdkDropListData]="dropArray"
+       [cdkDropListConnectedTo]="[dragList]"
+       (cdkDropListDropped)="drop($event)">
+    <div>Put your elements here:</div>
+    <div class="builder" [ngStyle]="getStylesByType('general') | async">
+      <div *ngFor="let item of dropArray" cdkDrag>
+        <app-switch-builder [item]="item"></app-switch-builder>
+      </div>
+    </div>
+  </div>
+</div>
+<div #comp3 class="portal">
+  <h3>Element section</h3>
+  <div cdkDropList
+         #dragList="cdkDropList"
+         [cdkDropListData]="dragArray"
+         [cdkDropListConnectedTo]="[dropList]"
+         (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of dragArray" cdkDrag>
+      <app-switch-builder [item]="item"></app-switch-builder>
+    </div>
+  </div>
+</div>
