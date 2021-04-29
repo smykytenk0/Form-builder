@@ -21,12 +21,12 @@ import {ElementType} from "../store/interfaces";
   styleUrls: ['./forms.component.scss']
 })
 export class FormsComponent implements AfterViewInit, OnInit {
-  @ViewChild('accordionContainer', {read: CdkPortalOutlet}) virtualPortalOutlet1: CdkPortalOutlet;
-  @ViewChild('builderContainer', {read: CdkPortalOutlet}) virtualPortalOutlet2: CdkPortalOutlet;
-  @ViewChild('elementsContainer', {read: CdkPortalOutlet}) virtualPortalOutlet3: CdkPortalOutlet;
-  @ViewChild('comp1') comp1: ElementRef;
-  @ViewChild('comp2') comp2: ElementRef;
-  @ViewChild('comp3') comp3: ElementRef;
+  @ViewChild('accordionContainer', {read: CdkPortalOutlet}) virtualPortalOutletAccordion: CdkPortalOutlet;
+  @ViewChild('builderContainer', {read: CdkPortalOutlet}) virtualPortalOutletBuilder: CdkPortalOutlet;
+  @ViewChild('elementsContainer', {read: CdkPortalOutlet}) virtualPortalOutletElements: CdkPortalOutlet;
+  @ViewChild('accordionComp') accordionComp: ElementRef;
+  @ViewChild('builderComp') builderComp: ElementRef;
+  @ViewChild('elementsComp') elementsComp: ElementRef;
 
   getStylesByType(type: string) {
     return this.store.pipe(select(getStylesBy(type)));
@@ -49,14 +49,14 @@ export class FormsComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.domPortal = new DomPortal(this.comp1);
-    this.virtualPortalOutlet1.attach(this.domPortal);
+    this.domPortal = new DomPortal(this.accordionComp);
+    this.virtualPortalOutletAccordion.attach(this.domPortal);
 
-    this.domPortal = new DomPortal(this.comp2);
-    this.virtualPortalOutlet2.attach(this.domPortal);
+    this.domPortal = new DomPortal(this.builderComp);
+    this.virtualPortalOutletBuilder.attach(this.domPortal);
 
-    this.domPortal = new DomPortal(this.comp3);
-    this.virtualPortalOutlet3.attach(this.domPortal);
+    this.domPortal = new DomPortal(this.elementsComp);
+    this.virtualPortalOutletElements.attach(this.domPortal);
 
   }
 

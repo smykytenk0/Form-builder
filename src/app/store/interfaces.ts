@@ -5,14 +5,13 @@ export interface User {
 }
 
 export enum ElementType  {
-  BTN = 'button',
+  BUTTON = 'button',
   CHECKBOX = 'checkbox',
   INPUT = 'input',
   LABEL = 'label',
   SELECT = 'select',
   TEXTAREA = 'textarea'
-};
-
+}
 
 export interface ElementStyles {
   buttonStyles?:{[key: string]: string},

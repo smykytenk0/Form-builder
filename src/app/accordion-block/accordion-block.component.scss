@@ -1,9 +1,11 @@
+@import "../../assets/variable";
+
 .item-name {
   display: flex;
   justify-content: space-between;
   padding: 20px;
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid $color-1;
   text-transform: capitalize;
 }
 

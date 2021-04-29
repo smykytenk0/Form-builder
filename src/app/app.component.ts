@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-export interface User {
+export interface IUser {
   email: string
   password: string
-  id?: type
+  id?: string;
 }
 
 @Component({

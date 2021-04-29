@@ -13,13 +13,13 @@
   </div>
 </div>
 
-<div #comp1 class="portal-outlet">
+<div #accordionComp class="portal-outlet">
   <app-switch item="general"></app-switch>
   <div *ngFor="let item of dropArray">
     <app-switch [item]="item"></app-switch>
   </div>
 </div>
-<div [formGroup]="form" #comp2 class="portal" >
+<div [formGroup]="form" #builderComp class="portal" >
   <h3>Builder section</h3>
   <div cdkDropList
        #dropList="cdkDropList"
@@ -34,7 +34,7 @@
     </div>
   </div>
 </div>
-<div #comp3 class="portal">
+<div #elementsComp class="portal">
   <h3>Element section</h3>
   <div cdkDropList
          #dragList="cdkDropList"

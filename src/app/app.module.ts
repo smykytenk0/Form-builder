@@ -4,6 +4,7 @@ import {StoreModule} from "@ngrx/store";
 import {ElementsStyleReducer} from "./store/styles.reducer";
 
 import {AppComponent} from "./app.component";
+import { ReactiveComponentModule } from '@ngrx/component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginFormComponent } from './login-form/login-form.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     DragDropModule,
     FormsModule,
     ReactiveFormsModule,
+    ReactiveComponentModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     RouterModule.forRoot(appRoutes),
