@@ -1,5 +1,5 @@
 <div [ngSwitch]="type">
-  <div *ngSwitchCase="'button'" ><app-button  [styles]="styles$ | async"></app-button></div>
+  <div *ngSwitchCase="Enum.Button" ><app-button  [styles]="styles$ | ngrxPush"></app-button></div>
   <div *ngSwitchCase="'checkbox'"><app-checkbox [styles]="styles$ | async" ></app-checkbox></div>
   <div *ngSwitchCase="'input'"><app-input [styles]="styles$ | async"></app-input></div>
   <div *ngSwitchCase="'label'"><app-label [styles]="styles$ | async"></app-label></div>
