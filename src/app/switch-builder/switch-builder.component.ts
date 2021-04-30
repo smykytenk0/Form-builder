@@ -11,7 +11,7 @@ import { ElementType } from "../store/interfaces";
   styleUrls: ['./switch-builder.component.scss']
 })
 export class SwitchBuilderComponent {
-  Enum = ElementType
+  ElementType = ElementType;
 
   type: string;
   styles$: Observable<{ [key: string]: string }>;
