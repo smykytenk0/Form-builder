@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<!--<form [formGroup]="form">
   <div class="item-name">
     <div *ngIf="!activeItem else inputTemplate" (dblclick)="activeItem=!activeItem">{{ title }} styles</div>
     <button type = "button" (click)="showStyles=!showStyles" *ngIf="!showStyles else buttonUp" class="btn">&#5167;</button>
@@ -25,4 +25,22 @@
   <ng-template #buttonUp>
     <button type = "button" (click)="showStyles=!showStyles" class="btn">&#5169;</button>
   </ng-template>
-</form>
+</form>-->
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title class="item-name">{{ title }} styles</mat-panel-title>
+  </mat-expansion-panel-header>
+  <form [formGroup]="elementForm">
+    <div>
+      <label id="elementName">Element Name</label>
+    </div>
+    <input>
+    <div *ngFor="let style of keys">
+      <div>
+        <label id="{{style}}"> {{style}}:</label>
+      </div>
+      <input formControlName="{{style}}">
+    </div>
+  </form>
+</mat-expansion-panel>

@@ -1,20 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {StoreModule} from "@ngrx/store";
-import {ElementsStyleReducer} from "./store/styles.reducer";
+import { ElementsStyleReducer } from "./store/styles.reducer";
 
-import {AppComponent} from "./app.component";
+import { AppComponent } from "./app.component";
 import { ReactiveComponentModule } from '@ngrx/component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginFormComponent } from './login-form/login-form.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
-import {RouterModule, Routes} from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { FormsComponent } from './forms/forms.component';
-import {DragDropModule} from "@angular/cdk/drag-drop";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 import { AccordionBlockComponent } from './accordion-block/accordion-block.component';
-import {PortalModule} from "@angular/cdk/portal";
+import { PortalModule } from "@angular/cdk/portal";
 import { ButtonComponent } from './form-components/button/button.component';
 import { CheckboxComponent } from './form-components/checkbox/checkbox.component';
 import { InputComponent } from './form-components/input/input.component';
@@ -23,7 +23,9 @@ import { SelectComponent } from './form-components/select/select.component';
 import {TextareaComponent} from "./form-components/textarea/textarea.component";
 import { SwitchStylesComponent } from './switch-styles/switch-styles.component';
 import { SwitchBuilderComponent } from './switch-builder/switch-builder.component';
-import {FormsGuard} from "./store/forms.guard";
+import { FormsGuard } from "./store/forms.guard";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from "@angular/material/expansion";
 
 
 const appRoutes: Routes = [
@@ -42,12 +44,14 @@ const appRoutes: Routes = [
     BrowserModule,
     DragDropModule,
     FormsModule,
+    MatExpansionModule,
     ReactiveFormsModule,
     ReactiveComponentModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     RouterModule.forRoot(appRoutes),
-    PortalModule
+    PortalModule,
+    BrowserAnimationsModule
   ],
   providers: [FormsGuard],
   bootstrap: [AppComponent],
