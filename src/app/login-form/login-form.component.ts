@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +10,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
   isSubmited = false;
-  constructor() {
+  constructor(private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class LoginFormComponent implements OnInit {
     console.log(formData);
     if(formData.email == 'smth@g' && formData.password == '123456'){
       this.isSubmited = !this.isSubmited;
+      this.auth.login()
     }
   }
 }

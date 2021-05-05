@@ -11,9 +11,9 @@ import {
 } from "../store/styles.reducer";
 import {FormGroup} from "@angular/forms";
 import {select, Store} from "@ngrx/store";
-import {Observable} from "rxjs";
 import {enumTOArray} from "../store/helper";
 import {ElementType} from "../store/interfaces";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-forms',
@@ -36,12 +36,11 @@ export class FormsComponent implements AfterViewInit, OnInit {
 
   dragArray = enumTOArray<string>(ElementType);
   dropArray = [];
-  styleType = {};
 
   domPortal: DomPortal<any>;
   form: FormGroup;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -76,6 +75,10 @@ export class FormsComponent implements AfterViewInit, OnInit {
       const name = this.dropArray[event.currentIndex];
       console.log(name);
     }
+  }
+
+  logout() {
+    this.auth.logout()
   }
 }
 

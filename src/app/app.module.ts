@@ -23,16 +23,17 @@ import { SelectComponent } from './form-components/select/select.component';
 import {TextareaComponent} from "./form-components/textarea/textarea.component";
 import { SwitchStylesComponent } from './switch-styles/switch-styles.component';
 import { SwitchBuilderComponent } from './switch-builder/switch-builder.component';
-import { FormsGuard } from "./store/forms.guard";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from "@angular/material/expansion";
+import {AuthGuard} from "./auth.guard";
+import {AuthService} from "./auth.service";
 
 
 const appRoutes: Routes = [
   {path:"login", component:LoginFormComponent},
   {path:"registration", component:RegistrationFormComponent},
   {path:"", component:LoginFormComponent},
-  {path:"forms", component: FormsComponent, canActivate: [FormsGuard]}
+  {path:"forms", component: FormsComponent, canActivate: [AuthGuard]}
 
 ];
 
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
     PortalModule,
     BrowserAnimationsModule
   ],
-  providers: [FormsGuard],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

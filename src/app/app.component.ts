@@ -13,5 +13,4 @@ export interface IUser {
 })
 export class AppComponent {
   title: "formbuilder";
-
 }
