@@ -14,18 +14,6 @@
       "id": "3",
       "email": "hellowordl@gmail.com",
       "password": "hello world"
-    },
-    {
-      "email": "v@gmail.com",
-      "password": "1234",
-      "type": "[AUTH] Login",
-      "id": "jqwao8T"
-    },
-    {
-      "email": "mykytenk00s@gmail.com",
-      "password": "123456",
-      "type": "[AUTH] Registration",
-      "id": "qlys1Wg"
     }
   ]
 }
