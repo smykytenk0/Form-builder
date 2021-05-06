@@ -5,15 +5,13 @@ import {
   ViewChild,
   ElementRef, OnInit
 } from '@angular/core';
-import {CdkDragDrop, copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
-import {
-  getStylesBy
-} from "../store/styles.reducer";
-import {FormGroup} from "@angular/forms";
-import {select, Store} from "@ngrx/store";
-import {enumTOArray} from "../store/helper";
-import {ElementType} from "../store/interfaces";
-import {AuthService} from "../auth.service";
+import { CdkDragDrop, copyArrayItem, moveItemInArray } from "@angular/cdk/drag-drop";
+import { getStylesBy } from "../store/styles.reducer";
+import { FormGroup } from "@angular/forms";
+import { select, Store } from "@ngrx/store";
+import { enumTOArray } from "../store/helper";
+import { ElementType } from "../store/interfaces";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-forms',
@@ -41,6 +39,7 @@ export class FormsComponent implements AfterViewInit, OnInit {
   form: FormGroup;
 
   constructor(private store: Store, private auth: AuthService) {
+
   }
 
   ngOnInit(): void {

@@ -2,17 +2,16 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {AuthService} from "./auth.service";
+import {select, Store} from "@ngrx/store";
+import {getAuthStatusSelector} from "./store/styles.reducer";
+import {tap} from "rxjs/operators";
 
 @Injectable({providedIn:'root'})
 export class AuthGuard implements CanActivate{
-  constructor(private authService : AuthService, private router: Router) {}
+  constructor(private authService : AuthService, private router: Router, private store: Store) {}
   canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean{
-    if(this.authService.isAuthenticated()){
-      return true
-    }
-    else{
-      window.alert("You don't have permission to view this page");
-      return false;
-    }
+    return this.store.pipe(select(getAuthStatusSelector),tap(isAuth=>{ if(!isAuth){
+      this.router.navigate(['/login']);
+    }}));
   }
 }

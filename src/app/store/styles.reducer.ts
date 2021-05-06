@@ -59,7 +59,8 @@ export const initialState: ElementStyles ={
     width: '99%',
     height: '90vh',
     borderRadius: '20px'
-  }
+  },
+  isAuth: false,
 };
 
 export const ElementsStyleReducer = createReducer(
@@ -76,6 +77,12 @@ export const ElementsStyleReducer = createReducer(
     }
     return {...state,elements:{...state.elements,[element]:payload}};
   }),
+  on(StylesActions.setAuthStatus, (state, {payload})=>{
+    return({
+      ...state,
+      isAuth: payload
+    })
+  }),
 );
 
 export function getStylesBy(name: string) {
@@ -88,6 +95,7 @@ export function getStylesBy(name: string) {
 }
 
 export const defaultStylesSelector = createFeatureSelector<ElementStyles>('elementStylesReducer');
+export const getAuthStatusSelector = createSelector(defaultStylesSelector, state=>state.isAuth);
 export const getBtnStylesSelector = createSelector(defaultStylesSelector, state=>{
   const {name,...clearStyles} =  state.buttonStyles;
   return clearStyles;

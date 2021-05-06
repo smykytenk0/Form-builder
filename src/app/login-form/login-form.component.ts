@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from "../auth.service";
+import {Store} from "@ngrx/store";
+import {AuthActions} from "../store/auth.actions";
 
 @Component({
   selector: 'app-login-form',
@@ -10,10 +12,15 @@ import {AuthService} from "../auth.service";
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
   isSubmited = false;
-  constructor(private auth: AuthService) {
+  formData;
+  constructor(private auth: AuthService, private store: Store) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.initForm()
+  }
+
+  initForm(){
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
@@ -21,11 +28,11 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = {...this.form.value};
-    console.log(formData);
-    if(formData.email == 'smth@g' && formData.password == '123456'){
-      this.isSubmited = !this.isSubmited;
-      this.auth.login()
+    this.formData = this.form.value;
+    console.log(this.formData);
+    if(this.formData.email == 'smth@g' && this.formData.password == "123456"){
+      this.auth.login();
+      this.isSubmited = true;
     }
   }
 }

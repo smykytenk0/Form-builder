@@ -1,18 +1,26 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
+import { select, Store } from "@ngrx/store";
+import { getAuthStatusSelector } from "./store/styles.reducer";
+import { StylesActions } from "./store/styles.actions";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({providedIn:'root'})
 export class AuthService{
-  private isAuth = false;
+  authResult: any;
+  constructor(private store: Store, private http: HttpClient) {
+    this.store.pipe(select(getAuthStatusSelector)).subscribe(value => this.authResult = value);
+  }
 
   login(){
-    return this.isAuth = true
+    this.store.dispatch(StylesActions.setAuthStatus({payload:true}));
+    this.authResult = true;
+    console.log(this.authResult)
   }
 
   logout(){
-    return this.isAuth = false
+    this.store.dispatch(StylesActions.setAuthStatus({payload: false}));
+    console.log(this.authResult)
+
   }
 
-  isAuthenticated(): boolean{
-    return this.isAuth
-  }
 }

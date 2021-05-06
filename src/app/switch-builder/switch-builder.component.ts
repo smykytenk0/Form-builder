@@ -20,6 +20,6 @@ export class SwitchBuilderComponent {
     this.type = getTypeFromName(name);
     this.styles$ = this.store.pipe(select(getStylesBy(name)));
   };
-  constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
 }

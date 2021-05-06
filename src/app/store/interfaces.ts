@@ -21,7 +21,8 @@ export interface ElementStyles {
   selectStyles?:{[key: string]: string},
   textareaStyles?:{[key: string]: string},
   elements?:{[key: string]: {[key: string]: string}},
-  generalStyles:{[key:string]:string}
+  generalStyles:{[key:string]:string},
+  isAuth?:boolean
 }
 
 export interface CustomComponent {

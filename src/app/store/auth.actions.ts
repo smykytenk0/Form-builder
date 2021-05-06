@@ -1,4 +1,4 @@
-import {createAction, Action} from "@ngrx/store";
+import {createAction} from "@ngrx/store";
 
 const page = '[Form Page]';
 
@@ -14,7 +14,7 @@ const registrationSuccess = createAction(`${page} Registration Success`);
 
 const  registrationFailure = createAction(`${page} Registration Failure`);
 
-export const  FormActions = {
+export const  AuthActions = {
   login,
   loginSuccess,
   loginFailure,

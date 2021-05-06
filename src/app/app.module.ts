@@ -25,8 +25,10 @@ import { SwitchStylesComponent } from './switch-styles/switch-styles.component';
 import { SwitchBuilderComponent } from './switch-builder/switch-builder.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from "@angular/material/expansion";
-import {AuthGuard} from "./auth.guard";
-import {AuthService} from "./auth.service";
+import { AuthGuard } from "./auth.guard";
+import { AuthService } from "./auth.service";
+import {HttpClientModule} from "@angular/common/http";
+
 
 
 const appRoutes: Routes = [
@@ -48,6 +50,7 @@ const appRoutes: Routes = [
     MatExpansionModule,
     ReactiveFormsModule,
     ReactiveComponentModule,
+    HttpClientModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     RouterModule.forRoot(appRoutes),

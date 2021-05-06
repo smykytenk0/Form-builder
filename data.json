@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "user@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "email": "admin@gmail.com",
+      "password": "121212"
+    },
+    {
+      "id": "3",
+      "email": "hellowordl@gmail.com",
+      "password": "hello world"
+    },
+    {
+      "email": "v@gmail.com",
+      "password": "1234",
+      "type": "[AUTH] Login",
+      "id": "jqwao8T"
+    },
+    {
+      "email": "mykytenk00s@gmail.com",
+      "password": "123456",
+      "type": "[AUTH] Registration",
+      "id": "qlys1Wg"
+    }
+  ]
+}
