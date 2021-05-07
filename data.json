@@ -1,19 +1,29 @@
 {
   "users": [
     {
-      "id": "1",
       "email": "user@gmail.com",
-      "password": "123456"
+      "password": "123456",
+      "id": "1"
     },
     {
-      "id": "2",
       "email": "admin@gmail.com",
-      "password": "121212"
+      "password": "121212",
+      "id": "2"
     },
     {
-      "id": "3",
       "email": "hellowordl@gmail.com",
-      "password": "hello world"
+      "password": "hello world",
+      "id": "3"
+    },
+    {
+      "email": "hello@gmail.com",
+      "password": "helloWorld",
+      "id": "Ajde1jq"
+    },
+    {
+      "email": "myNameIsSkrillex@gmail.com",
+      "password": "Skrillex",
+      "id": "ut8MrbH"
     }
   ]
 }

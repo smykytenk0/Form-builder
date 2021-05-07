@@ -28,6 +28,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import {HttpClientModule} from "@angular/common/http";
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, SwitchStylesComponent, SwitchBuilderComponent],
+  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, SwitchStylesComponent, SwitchBuilderComponent, HeaderComponent],
   imports: [
     StoreModule.forRoot({elementStylesReducer: ElementsStyleReducer}),
     BrowserModule,

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from "../auth.service";
-import {Store} from "@ngrx/store";
-import {AuthActions} from "../store/auth.actions";
+import { AuthService } from "../auth.service";
+import { Store } from "@ngrx/store";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login-form',
@@ -11,9 +11,9 @@ import {AuthActions} from "../store/auth.actions";
 })
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
-  isSubmited = false;
+
   formData;
-  constructor(private auth: AuthService, private store: Store) {
+  constructor(private auth: AuthService, private store: Store, private router: Router) {
   }
 
   ngOnInit() {
@@ -29,10 +29,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     this.formData = this.form.value;
-    console.log(this.formData);
-    if(this.formData.email == 'smth@g' && this.formData.password == "123456"){
-      this.auth.login();
-      this.isSubmited = true;
-    }
+    this.auth.login(this.formData).subscribe();
+    this.router.navigate(['/forms'])
   }
 }
