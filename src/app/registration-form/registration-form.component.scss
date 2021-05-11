@@ -40,3 +40,23 @@ small{
 a{
   text-decoration: none;
 }
+
+button{
+  border-radius: 20px;
+  outline: none;
+  border: 1px solid $color-1;
+  width: 75px;
+  height: 30px;
+  background-color: $color-6;
+  color: black;
+  cursor: pointer;
+  margin: 10px 150px;
+}
+
+h1{
+  padding-top: 10px;
+}
+
+label{
+  padding: 5px;
+}

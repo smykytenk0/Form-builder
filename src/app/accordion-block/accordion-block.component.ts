@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { StylesActions } from "../store/styles.actions";
 
 
+
 @Component({
   selector: 'app-acordion-block',
   templateUrl: './accordion-block.component.html',
@@ -30,5 +31,10 @@ export class AccordionBlockComponent implements OnInit {
 
   enterChanges(payload: { [key: string]: string }): void {
     this.store.dispatch(StylesActions.setStylesByType({ payload, element: this.title }));
+  }
+
+  deleteElement(title) {
+    this.store.dispatch(StylesActions.deleteElement({element: this.title}));
+    console.log(title);
   }
 }

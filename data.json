@@ -24,6 +24,32 @@
       "email": "myNameIsSkrillex@gmail.com",
       "password": "Skrillex",
       "id": "ut8MrbH"
+    },
+    {
+      "email": "Sasha@gmail.com",
+      "password": "Sasha",
+      "id": "ug3Xb0f"
+    },
+    {
+      "email": "Sasha@gmail.com",
+      "password": "Sasha",
+      "id": "4SIn9rb"
+    },
+    {
+      "email": "mykytenk00s@gmail.com",
+      "password": "1234",
+      "type": "[AUTH] Login",
+      "id": "AQKmG0q"
+    },
+    {
+      "email": "hello@g",
+      "password": "123456",
+      "id": "MK7MnwD"
+    },
+    {
+      "email": "smykytenk00s@gmail.com",
+      "password": "456456",
+      "id": "q9P1tmx"
     }
   ]
 }

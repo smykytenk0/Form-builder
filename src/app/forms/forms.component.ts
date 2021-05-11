@@ -6,12 +6,12 @@ import {
   ElementRef, OnInit
 } from '@angular/core';
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from "@angular/cdk/drag-drop";
-import { getStylesBy } from "../store/styles.reducer";
+import { getStylesBy
+} from "../store/styles.reducer";
 import { FormGroup } from "@angular/forms";
 import { select, Store } from "@ngrx/store";
 import { enumTOArray } from "../store/helper";
 import { ElementType } from "../store/interfaces";
-import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-forms',
@@ -34,11 +34,12 @@ export class FormsComponent implements AfterViewInit, OnInit {
 
   dragArray = enumTOArray<string>(ElementType);
   dropArray = [];
+  deleteElementIndex: number;
 
   domPortal: DomPortal<any>;
   form: FormGroup;
 
-  constructor(private store: Store, private auth: AuthService) {
+  constructor(private store: Store) {
 
   }
 
@@ -71,8 +72,9 @@ export class FormsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  logout() {
-    this.auth.logout()
+  deleteElement(element){
+    this.deleteElementIndex = this.dropArray.indexOf(element);
+    this.dropArray.splice(this.deleteElementIndex, 1);
   }
 }
 

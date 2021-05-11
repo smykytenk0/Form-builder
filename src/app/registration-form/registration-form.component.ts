@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
 import { Store } from "@ngrx/store";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-registration-form',
@@ -12,7 +13,7 @@ export class RegistrationFormComponent implements OnInit {
   form: FormGroup;
   formData: object;
 
-  constructor(private auth: AuthService, private store: Store ) { }
+  constructor(private auth: AuthService, private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -24,8 +25,8 @@ export class RegistrationFormComponent implements OnInit {
 
   onSubmit() {
     this.formData = this.form.value;
-    console.log(this.formData);
     this.auth.register(this.formData).subscribe();
+    this.router.navigate(['/forms'])
   }
 
 }

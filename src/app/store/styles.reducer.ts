@@ -2,7 +2,6 @@ import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/st
 import {ElementStyles} from "./interfaces";
 import {StylesActions} from "./styles.actions";
 import {getTypeFromName} from "./helper";
-import {element} from "protractor";
 
 export const initialState: ElementStyles ={
   buttonStyles: {
@@ -70,6 +69,9 @@ export const ElementsStyleReducer = createReducer(
     const typedStyles = state[`${type}Styles`];
     return  {...state,elements: {...state.elements, [element]:typedStyles}};
   }),
+  on(StylesActions.deleteElement, (state, {element})=>{
+    return {...state, [`${element}Styles`]:null}
+  }),
   on(StylesActions.setStylesByType,(state,{payload,element}) =>{
     const type = getTypeFromName(element);
     if(type === element) {
@@ -96,6 +98,7 @@ export function getStylesBy(name: string) {
 
 export const defaultStylesSelector = createFeatureSelector<ElementStyles>('elementStylesReducer');
 export const getAuthStatusSelector = createSelector(defaultStylesSelector, state=>state.isAuth);
+
 export const getBtnStylesSelector = createSelector(defaultStylesSelector, state=>{
   const {name,...clearStyles} =  state.buttonStyles;
   return clearStyles;

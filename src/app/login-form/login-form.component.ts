@@ -13,7 +13,7 @@ export class LoginFormComponent implements OnInit {
   form: FormGroup;
 
   formData;
-  constructor(private auth: AuthService, private store: Store, private router: Router) {
+  constructor(private auth: AuthService, private store: Store) {
   }
 
   ngOnInit() {
@@ -30,6 +30,5 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     this.formData = this.form.value;
     this.auth.login(this.formData).subscribe();
-    this.router.navigate(['/forms'])
   }
 }

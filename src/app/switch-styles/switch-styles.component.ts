@@ -14,6 +14,7 @@ export class SwitchStylesComponent {
     this.styles$ = this.store.pipe(select(getStylesBy(this.title)));
   }
 
+
   styles$: Observable<{ [key: string]: string }>;
   title: string;
 
