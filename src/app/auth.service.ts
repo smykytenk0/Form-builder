@@ -4,8 +4,11 @@ import { getAuthStatusSelector } from "./store/styles.reducer";
 import { StylesActions } from "./store/styles.actions";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import * as jwtEncode from "jwt-encode"
+import {AuthResponse, User} from "./store/interfaces";
+import {Observable} from "rxjs";
 
 @Injectable({providedIn:'root'})
 export class AuthService{
@@ -13,6 +16,10 @@ export class AuthService{
   users = [];
   constructor(private store: Store, private http: HttpClient, private router: Router) {
     this.store.pipe(select(getAuthStatusSelector)).subscribe(value => this.authResult = value);
+  }
+
+  getUsers(){
+    return this.http.get(`${environment.baseUrl}users`)
   }
   //TODO: `refactor all the login function code between lines`
   //----------------------------------------------
@@ -38,17 +45,42 @@ export class AuthService{
   }
   //----------------------------------------------
 
-  register( data ){
-    this.store.dispatch(StylesActions.setAuthStatus({payload:true}));
-    return this.http.post(`${environment.baseUrl}users`, data);
+
+
+  register( registeredUser: User ): Observable<AuthResponse>{
+    return this.http.post(`${environment.baseUrl}users`, registeredUser).pipe(
+      map((user)=>{
+          return this.createToken(user)
+        },
+        catchError(err=>err))
+    )
   }
 
   logout(){
     this.store.dispatch(StylesActions.setAuthStatus({payload: false}));
   }
 
-  createToken(){
-
+  createAllUserTokens(){
+    return this.http.get(`${environment.baseUrl}users`).pipe(
+      map(user =>  {
+        console.log(this.createToken(user));
+        return this.createToken(user)
+      })
+    )
   }
 
+  logIn(newUser: User): Observable<AuthResponse>{
+    console.log(newUser);
+    return this.http.get(`${environment.baseUrl}users`).pipe(
+      map( (user) =>{
+        console.log(user);
+        return this.createToken(user);
+      },
+        catchError(err=>err))
+    )
+  }
+
+  createToken(obj){
+    return jwtEncode(obj, "your-256-bit-secret")
+  }
 }

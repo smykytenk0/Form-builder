@@ -29,7 +29,8 @@ import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
-
+import { EffectsModule } from '@ngrx/effects';
+import {AuthEffects} from "./store/effects";
 
 
 const appRoutes: Routes = [
@@ -37,13 +38,13 @@ const appRoutes: Routes = [
   {path:"registration", component:RegistrationFormComponent},
   {path:"", component:LoginFormComponent},
   {path:"forms", component: FormsComponent, canActivate: [AuthGuard]}
-
 ];
 
 
 @NgModule({
   declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, SwitchStylesComponent, SwitchBuilderComponent, HeaderComponent],
   imports: [
+    EffectsModule.forRoot([AuthEffects]),
     StoreModule.forRoot({elementStylesReducer: ElementsStyleReducer}),
     BrowserModule,
     DragDropModule,

@@ -1,25 +1,32 @@
-import {createAction} from "@ngrx/store";
+import { createAction, props } from '@ngrx/store';
+import {AuthResponse, User, Error} from "./interfaces";
 
-const page = '[Form Page]';
+export const loginAction = createAction(
+  '[Login Page] Login',
+  props< User >()
+);
 
-const login = createAction(`${page} Login`);
+export const loginSuccessAction = createAction(
+  '[Login Page] Login Success',
+  props< AuthResponse >()
+);
 
-const loginSuccess = createAction(`${page} Login Success`);
+export const loginFailureAction = createAction(
+  '[Login Page] Login Failure',
+  props< Error >()
+);
 
-const loginFailure = createAction(`${page} Login Failure`);
+export const registrationAction = createAction(
+  '[Registration Page] Registration',
+  props< User >()
+);
 
-const registration = createAction(`${page} Registration `);
+export const registrationSuccessAction = createAction(
+  '[Registration Page] Registration Success',
+  props< AuthResponse >()
+);
 
-const registrationSuccess = createAction(`${page} Registration Success`);
-
-const  registrationFailure = createAction(`${page} Registration Failure`);
-
-export const  AuthActions = {
-  login,
-  loginSuccess,
-  loginFailure,
-  registration,
-  registrationSuccess,
-  registrationFailure
-};
-
+export const registrationFailureAction = createAction(
+  '[Registration Page] Registration Failure',
+  props< Error >()
+);

@@ -1,15 +1,44 @@
-import {User} from "./interfaces";
 import { createReducer, on } from "@ngrx/store";
-import { AuthActions } from "./auth.actions";
+import {
+  loginFailureAction,
+  loginSuccessAction,
+  registrationFailureAction,
+  registrationSuccessAction
+} from "./auth.actions";
+import { Response } from "./interfaces";
 
-const initialState: User[] = [];
+const initialState: Response = {
+  token: null,
+  error: null,
+  isAuth: false,
+};
 
-export const formReducer = createReducer(
+export const authReducer = createReducer(
   initialState,
-  on(AuthActions.login, ()=>initialState),
-  on(AuthActions.loginSuccess, ()=>initialState),
-  on(AuthActions.loginFailure, ()=>initialState),
-  on(AuthActions.registration, ()=>initialState),
-  on(AuthActions.registrationSuccess, ()=> initialState),
-  on(AuthActions.registrationFailure, ()=>initialState)
+  on(loginSuccessAction, (state, prop) => ({
+    ...state,
+    token: prop,
+    error: null,
+    isAuth: true
+  })),
+  on(loginFailureAction, (state, prop)=>({
+    ...state,
+    token: null,
+    error: prop,
+    isAuth: false
+  })),
+  on(registrationSuccessAction, (state, prop)=>({
+    ...state,
+    token: prop,
+    error: null,
+    isAuth: true,
+  })),
+  on(registrationFailureAction, (state, prop)=>({
+    ...state,
+    token: null,
+    error: prop,
+    isAuth: true,
+  }))
 );
+
+

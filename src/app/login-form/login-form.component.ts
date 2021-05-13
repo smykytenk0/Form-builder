@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from "../auth.service";
-import { Store } from "@ngrx/store";
+import {select, Store} from "@ngrx/store";
 import { Router } from "@angular/router";
+import {loginAction} from "../store/auth.actions";
+import {getAuthStatusSelector} from "../store/styles.reducer";
+import {StylesActions} from "../store/styles.actions";
 
 @Component({
   selector: 'app-login-form',
@@ -11,9 +14,9 @@ import { Router } from "@angular/router";
 })
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
+  isAuth: boolean;
 
-  formData;
-  constructor(private auth: AuthService, private store: Store) {
+  constructor(private auth: AuthService, private store: Store, private router: Router) {
   }
 
   ngOnInit() {
@@ -28,7 +31,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.formData = this.form.value;
-    this.auth.login(this.formData).subscribe();
+    this.store.dispatch(loginAction(this.form.value));
   }
 }

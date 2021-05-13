@@ -1,5 +1,5 @@
 export interface User {
-  id: string,
+  id?: string,
   email: string,
   password: string
 }
@@ -25,7 +25,18 @@ export interface ElementStyles {
   isAuth?:boolean
 }
 
-export interface CustomComponent {
-  id: string,
+export interface Error {
+  code: number;
+  message: string;
+}
+
+export interface AuthResponse {
+  accessToken: string
+}
+
+export interface Response {
+  token: AuthResponse;
+  error: Error;
+  isAuth: boolean;
 }
 
