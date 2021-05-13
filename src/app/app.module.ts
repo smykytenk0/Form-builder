@@ -31,6 +31,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import {AuthEffects} from "./store/effects";
+import { SimplePipe } from './pipes/simple.pipe';
 
 
 const appRoutes: Routes = [
@@ -42,7 +43,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, SwitchStylesComponent, SwitchBuilderComponent, HeaderComponent],
+  declarations: [AppComponent, LoginFormComponent, RegistrationFormComponent, FormsComponent, TextareaComponent, AccordionBlockComponent, ButtonComponent, CheckboxComponent, InputComponent, LabelComponent, SelectComponent, SwitchStylesComponent, SwitchBuilderComponent, HeaderComponent, SimplePipe],
   imports: [
     EffectsModule.forRoot([AuthEffects]),
     StoreModule.forRoot({elementStylesReducer: ElementsStyleReducer}),

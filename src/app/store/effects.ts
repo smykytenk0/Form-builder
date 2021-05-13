@@ -1,8 +1,8 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {AuthService} from "../auth.service";
-import {catchError, map, mergeMap, switchMap} from "rxjs/operators";
-import {Observable, of} from "rxjs";
+import { Injectable } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { AuthService } from "../auth.service";
+import { catchError, map, switchMap } from "rxjs/operators";
+import { Observable, of } from "rxjs";
 import {
   loginAction,
   loginFailureAction,
@@ -21,7 +21,7 @@ export class AuthEffects{
     switchMap((prop: User): Observable<any> => this.auth.logIn(prop)
       .pipe(
         map((accessToken:AuthResponse)=>loginSuccessAction(accessToken)),
-        catchError((err: Error)=> of(loginFailureAction))
+        catchError((err: Error)=> of(loginFailureAction(err)))
       )
     )
   ));
@@ -31,7 +31,7 @@ export class AuthEffects{
     switchMap((prop: User)=> this.auth.register(prop)
       .pipe(
         map((accessToken: AuthResponse)=>(registrationSuccessAction(accessToken))),
-        catchError((err: Error)=>of(registrationFailureAction))
+        catchError((err: Error)=>of(registrationFailureAction(err)))
       ))
   ))
 }

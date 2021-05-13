@@ -5,7 +5,6 @@ import { StylesActions } from "./store/styles.actions";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment";
 import {catchError, map} from "rxjs/operators";
-import {Router} from "@angular/router";
 import * as jwtEncode from "jwt-encode"
 import {AuthResponse, User} from "./store/interfaces";
 import {Observable} from "rxjs";
@@ -13,39 +12,9 @@ import {Observable} from "rxjs";
 @Injectable({providedIn:'root'})
 export class AuthService{
   authResult: boolean;
-  users = [];
-  constructor(private store: Store, private http: HttpClient, private router: Router) {
+  constructor(private store: Store, private http: HttpClient) {
     this.store.pipe(select(getAuthStatusSelector)).subscribe(value => this.authResult = value);
   }
-
-  getUsers(){
-    return this.http.get(`${environment.baseUrl}users`)
-  }
-  //TODO: `refactor all the login function code between lines`
-  //----------------------------------------------
-  login( data ){
-    return this.http.get(`${environment.baseUrl}users`).pipe(
-      map(item=>{
-        this.users.push(item);
-        for(let user of this.users[0]){
-          if(user.email == data.email && user.password == data.password){
-            this.authResult = true;
-            break
-          }
-        }
-        if(this.authResult){
-          this.store.dispatch(StylesActions.setAuthStatus({payload: this.authResult}));
-          this.router.navigate(["/forms"])
-        }
-        else{
-          alert("Your password is incorrect! Try again!")
-        }
-      })
-    );
-  }
-  //----------------------------------------------
-
-
 
   register( registeredUser: User ): Observable<AuthResponse>{
     return this.http.post(`${environment.baseUrl}users`, registeredUser).pipe(
@@ -58,15 +27,6 @@ export class AuthService{
 
   logout(){
     this.store.dispatch(StylesActions.setAuthStatus({payload: false}));
-  }
-
-  createAllUserTokens(){
-    return this.http.get(`${environment.baseUrl}users`).pipe(
-      map(user =>  {
-        console.log(this.createToken(user));
-        return this.createToken(user)
-      })
-    )
   }
 
   logIn(newUser: User): Observable<AuthResponse>{
