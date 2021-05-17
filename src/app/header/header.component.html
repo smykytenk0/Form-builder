@@ -1,0 +1,8 @@
+<div class="header">
+  <a routerLink="/forms">Forms</a>
+  <a *ngIf="!isAuth; else logoutText" routerLink="/login">Login</a>
+  <a *ngIf="!isAuth" routerLink="/registration">Register</a>
+  <ng-template #logoutText>
+    <a routerLink="/login" (click)="logout()">Logout</a>
+  </ng-template>
+</div>
