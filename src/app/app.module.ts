@@ -27,11 +27,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from "@angular/material/expansion";
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import {AuthEffects} from "./store/effects";
 import { SimplePipe } from './pipes/simple.pipe';
+import {TokenInterceptor} from "./token.interceptor";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 const appRoutes: Routes = [
@@ -58,9 +60,15 @@ const appRoutes: Routes = [
 
     RouterModule.forRoot(appRoutes),
     PortalModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {

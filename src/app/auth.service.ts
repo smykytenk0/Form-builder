@@ -29,11 +29,15 @@ export class AuthService{
     this.store.dispatch(StylesActions.setAuthStatus({payload: false}));
   }
 
+  showAuthStatus(){
+    this.store.pipe(select(getAuthStatusSelector)).subscribe(value => this.authResult = value);
+    return this.authResult;
+  }
+
   logIn(newUser: User): Observable<AuthResponse>{
     console.log(newUser);
     return this.http.get(`${environment.baseUrl}users`).pipe(
       map( (user) =>{
-        console.log(user);
         return this.createToken(user);
       },
         catchError(err=>err))

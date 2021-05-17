@@ -8,10 +8,13 @@ import {tap} from "rxjs/operators";
 
 @Injectable({providedIn:'root'})
 export class AuthGuard implements CanActivate{
-  constructor(private authService : AuthService, private router: Router, private store: Store) {}
+  constructor(private auth : AuthService, private router: Router, private store: Store) {}
   canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean{
-    return this.store.pipe(select(getAuthStatusSelector),tap(isAuth=>{ if(!isAuth){
-      this.router.navigate(['/login']);
-    }}));
+    const currentUser = this.auth.showAuthStatus();
+    if(currentUser){
+      return true
+    }
+    this.router.navigate(['/login']);
+    return false;
   }
 }
