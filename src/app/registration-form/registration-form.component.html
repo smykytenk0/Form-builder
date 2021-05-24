@@ -14,8 +14,8 @@
         <input type="password" placeholder="password" formControlName="password">
         <div class="validation" *ngIf="form.get('password').invalid&&form.get('password').touched">
           <small *ngIf="form.get('password').errors.required">Field password couldn't be empty</small>
-          <small *ngIf="form.get('password').errors.minlength">Too short. You should enter at least {{form.get('password').errors.minlength.requiredLength}} characters.
-            Now you have only {{form.get('password').errors.minlength.actualLength}} characters. </small>
+          <small *ngIf="form.get('password').errors.minlength">Too short. You should enter at least {{ form.get('password').errors.minlength.requiredLength }} characters.
+            Now you have only {{ form.get('password').errors.minlength.actualLength }} characters. </small>
         </div>
       </div>
       <button type="submit" [disabled]="form.invalid">Register</button>

@@ -25,7 +25,7 @@ export class RegistrationFormComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.formData = this.form.value;
     this.auth.register(this.formData).subscribe();
     this.store.dispatch(StylesActions.setAuthStatus({payload: true}));

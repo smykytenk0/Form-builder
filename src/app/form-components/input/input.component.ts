@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ComponentItem} from "../../store/component-item";
+import { Component, Input } from '@angular/core';
+import { ComponentItem } from '../../store/component-item';
 
 @Component({
   selector: 'app-input',

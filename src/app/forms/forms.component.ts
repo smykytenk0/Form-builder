@@ -1,17 +1,13 @@
-import {CdkPortalOutlet, DomPortal} from '@angular/cdk/portal';
-import {
-  AfterViewInit,
-  Component,
-  ViewChild,
-  ElementRef, OnInit
-} from '@angular/core';
-import { CdkDragDrop, copyArrayItem, moveItemInArray } from "@angular/cdk/drag-drop";
-import { getStylesBy
-} from "../store/styles.reducer";
-import { FormGroup } from "@angular/forms";
-import { select, Store } from "@ngrx/store";
-import { enumTOArray } from "../store/helper";
-import { ElementType } from "../store/interfaces";
+import { CdkPortalOutlet, DomPortal } from '@angular/cdk/portal';
+import { AfterViewInit, Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
+import { FormGroup } from '@angular/forms';
+import { select, Store } from '@ngrx/store';
+
+import { getStylesBy } from '../store/styles.reducer';
+import { enumTOArray } from '../store/helper';
+import { ElementType } from '../store/interfaces';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-forms',
@@ -26,7 +22,7 @@ export class FormsComponent implements AfterViewInit, OnInit {
   @ViewChild('builderComp') builderComp: ElementRef;
   @ViewChild('elementsComp') elementsComp: ElementRef;
 
-  getStylesByType(type: string) {
+  getStylesByType(type: string): Observable<string> {
     return this.store.pipe(select(getStylesBy(type)));
   }
 
@@ -34,7 +30,6 @@ export class FormsComponent implements AfterViewInit, OnInit {
 
   dragArray = enumTOArray<string>(ElementType);
   dropArray = [];
-  deleteElementIndex: number;
 
   domPortal: DomPortal<any>;
   form: FormGroup;
@@ -72,9 +67,6 @@ export class FormsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  deleteElement(element){
-    this.deleteElementIndex = this.dropArray.indexOf(element);
-    this.dropArray.splice(this.deleteElementIndex, 1);
-  }
+
 }
 

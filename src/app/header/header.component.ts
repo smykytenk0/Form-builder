@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Store} from "@ngrx/store";
-import {getAuthStatusSelector} from "../store/styles.reducer";
-import {AuthService} from "../auth.service";
+import { Store } from '@ngrx/store';
+import { getAuthStatusSelector } from '../store/styles.reducer';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +13,13 @@ export class HeaderComponent implements OnInit {
   constructor(private store: Store, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.store.select(getAuthStatusSelector).subscribe(result=>this.isAuth = result);
+    this.store.select(getAuthStatusSelector)
+      .subscribe(
+        result=>this.isAuth = result
+      );
   }
 
-  logout(){
+  logout(): void{
     this.auth.logout()
   }
 

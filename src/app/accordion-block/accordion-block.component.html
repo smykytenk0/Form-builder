@@ -9,11 +9,10 @@
     <input>
     <div *ngFor="let style of keys">
       <div>
-        <label id="{{style}}"> {{style}}:</label>
+        <label id="{{style}}"> {{ style }}:</label>
       </div>
-      <input formControlName="{{style}}">
+      <input formControlName="{{ style }}">
     </div>
     <button type ='submit' (click)="enterChanges(elementForm.value)">Apply Changes</button>
-    <button *ngIf="title!='general'" (click)="deleteElement(title)">Delete element</button>
   </form>
 </mat-expansion-panel>

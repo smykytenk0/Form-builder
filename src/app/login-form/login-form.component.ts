@@ -21,18 +21,18 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   constructor(private auth: AuthService, private store: Store, private router: Router) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initForm()
   }
 
-  initForm(){
+  initForm(): void{
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
     })
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.store.dispatch(loginAction(this.form.value));
     this.store.dispatch(StylesActions.setAuthStatus({payload: true}));
     this.store.select(getAuthStatusSelector).pipe(

@@ -32,9 +32,4 @@ export class AccordionBlockComponent implements OnInit {
   enterChanges(payload: { [key: string]: string }): void {
     this.store.dispatch(StylesActions.setStylesByType({ payload, element: this.title }));
   }
-
-  deleteElement(title) {
-    this.store.dispatch(StylesActions.deleteElement({element: this.title}));
-    console.log(title);
-  }
 }
