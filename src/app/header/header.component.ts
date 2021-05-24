@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { getAuthStatusSelector } from '../store/styles.reducer';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isAuth;
+  isAuth: boolean;
   constructor(private store: Store, private auth: AuthService) { }
 
   ngOnInit(): void {

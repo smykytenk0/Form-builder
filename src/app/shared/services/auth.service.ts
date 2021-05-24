@@ -1,13 +1,14 @@
-import { Injectable } from "@angular/core";
-import { select, Store } from "@ngrx/store";
-import { getAuthStatusSelector } from "./store/styles.reducer";
-import { StylesActions } from "./store/styles.actions";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../environments/environment";
-import {catchError, map} from "rxjs/operators";
-import * as jwtEncode from "jwt-encode"
-import {AuthResponse, User} from "./store/interfaces";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as jwtEncode from 'jwt-encode';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+
+import { environment } from '../../../environments/environment';
+import { getAuthStatusSelector } from '../../store/styles.reducer';
+import { AuthResponse, User } from '../interfaces/interfaces';
+import { StylesActions } from '../../store/styles.actions';
 
 @Injectable({providedIn:'root'})
 export class AuthService{
@@ -25,11 +26,11 @@ export class AuthService{
     )
   }
 
-  logout(){
+  logout(): void{
     this.store.dispatch(StylesActions.setAuthStatus({payload: false}));
   }
 
-  showAuthStatus(){
+  showAuthStatus(): boolean{
     this.store.pipe(select(getAuthStatusSelector)).subscribe(value => this.authResult = value);
     return this.authResult;
   }

@@ -25,14 +25,14 @@ import { SwitchStylesComponent } from './switch-styles/switch-styles.component';
 import { SwitchBuilderComponent } from './switch-builder/switch-builder.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { AuthService } from './shared/services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects';
-import { SimplePipe } from './pipes/simple.pipe';
-import { TokenInterceptor } from "./token.interceptor";
+import { SimplePipe } from './shared/pipes/simple.pipe';
+import { TokenInterceptor } from "./shared/interceptors/token.interceptor";
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 

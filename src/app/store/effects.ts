@@ -1,16 +1,17 @@
-import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { AuthService } from "../auth.service";
-import { catchError, map, switchMap } from "rxjs/operators";
-import { Observable, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+
 import {
   loginAction,
   loginFailureAction,
   loginSuccessAction,
   registrationAction,
   registrationFailureAction, registrationSuccessAction
-} from "./auth.actions";
-import {AuthResponse, User, Error} from "./interfaces";
+} from './auth.actions';
+import { AuthResponse, User, Error } from '../shared/interfaces/interfaces';
+import { AuthService } from '../shared/services/auth.service';
 
 @Injectable()
 

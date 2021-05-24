@@ -1,7 +1,7 @@
-import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
-import {ElementStyles} from "./interfaces";
-import {StylesActions} from "./styles.actions";
-import {getTypeFromName} from "./helper";
+import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+import { ElementStyles } from '../shared/interfaces/interfaces';
+import { StylesActions } from './styles.actions';
+import { getTypeFromName } from './helper';
 
 export const initialState: ElementStyles ={
   buttonStyles: {

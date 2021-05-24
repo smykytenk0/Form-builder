@@ -3,11 +3,11 @@ import { AfterViewInit, Component, ViewChild, ElementRef, OnInit } from '@angula
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormGroup } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { getStylesBy } from '../store/styles.reducer';
 import { enumTOArray } from '../store/helper';
-import { ElementType } from '../store/interfaces';
-import {Observable} from "rxjs";
+import { ElementType } from '../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-forms',
@@ -66,7 +66,5 @@ export class FormsComponent implements AfterViewInit, OnInit {
       this.dropArray[event.currentIndex] = this.dropArray[event.currentIndex] + '_' + this.dropArray.length;
     }
   }
-
-
 }
 

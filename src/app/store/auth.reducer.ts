@@ -1,11 +1,12 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 import {
   loginFailureAction,
   loginSuccessAction,
   registrationFailureAction,
   registrationSuccessAction
-} from "./auth.actions";
-import { Response } from "./interfaces";
+} from './auth.actions';
+
+import { Response } from "../shared/interfaces/interfaces";
 
 const initialState: Response = {
   token: null,

@@ -1,13 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from "../auth.service";
-import { Store } from "@ngrx/store";
-import { Router } from "@angular/router";
-import { loginAction } from "../store/auth.actions";
-import { StylesActions } from "../store/styles.actions";
-import {Subject} from "rxjs";
-import {getAuthStatusSelector} from "../store/styles.reducer";
-import {filter, takeUntil} from "rxjs/operators";
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
+import { loginAction } from '../store/auth.actions';
+import { StylesActions } from '../store/styles.actions';
+import { getAuthStatusSelector } from '../store/styles.reducer';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-login-form',

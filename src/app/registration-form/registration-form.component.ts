@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../auth.service";
-import { Store } from "@ngrx/store";
-import {Router} from "@angular/router";
-import {User} from "../store/interfaces";
-import {StylesActions} from "../store/styles.actions";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../shared/services/auth.service';
+import { User } from '../shared/interfaces/interfaces';
+import { StylesActions } from '../store/styles.actions';
 
 @Component({
   selector: 'app-registration-form',

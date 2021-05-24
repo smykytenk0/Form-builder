@@ -1,10 +1,10 @@
-import {Component, Injectable, Input} from '@angular/core';
-import { Observable } from "rxjs";
-import { select, Store } from "@ngrx/store";
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
 
-import { getStylesBy } from "../store/styles.reducer";
-import { getTypeFromName } from "../store/helper";
-import { ElementType } from "../store/interfaces";
+import { getStylesBy } from '../store/styles.reducer';
+import { getTypeFromName } from '../store/helper';
+import { ElementType } from '../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-switch-builder',
