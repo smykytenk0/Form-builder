@@ -17,13 +17,15 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  unsubscribe$ = new Subject();
+  private unsubscribeAll: Subject<any> = new Subject<any>();
 
-  constructor(private auth: AuthService, private store: Store, private router: Router) {
+  constructor(private auth: AuthService,
+              private store: Store,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
 
   initForm(): void{
@@ -37,14 +39,14 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     this.store.dispatch(loginAction(this.form.value));
     this.store.dispatch(StylesActions.setAuthStatus({payload: true}));
     this.store.select(getAuthStatusSelector).pipe(
-      takeUntil(this.unsubscribe$),
+      takeUntil(this.unsubscribeAll),
       filter(isAuth=>!!isAuth)
-    ).subscribe((isAuth:boolean) => this.router.navigate(['/forms']))
+    ).subscribe(() => this.router.navigate(['/forms']));
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
+    this.unsubscribeAll.next();
+    this.unsubscribeAll.complete();
   }
 
 }

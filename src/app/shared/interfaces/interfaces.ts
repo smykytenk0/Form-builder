@@ -22,7 +22,7 @@ export interface ElementStyles {
   textareaStyles?:{[key: string]: string},
   elements?:{[key: string]: {[key: string]: string}},
   generalStyles:{[key:string]:string},
-  isAuth?:boolean
+  isAuth:boolean
 }
 
 export interface Error {
@@ -31,7 +31,7 @@ export interface Error {
 }
 
 export interface AuthResponse {
-  accessToken: string
+  accessToken: string;
 }
 
 export interface Response {
