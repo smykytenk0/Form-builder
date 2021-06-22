@@ -1,7 +1,7 @@
 export interface User {
-  id?: string,
-  email: string,
-  password: string
+  id?: string;
+  email: string;
+  password: string;
 }
 
 export enum ElementType  {
@@ -14,15 +14,15 @@ export enum ElementType  {
 }
 
 export interface ElementStyles {
-  buttonStyles?:{[key: string]: string},
-  checkboxStyles?:{[key: string]: string},
-  inputStyles?:{[key: string]: string},
-  labelStyles?:{[key: string]: string},
-  selectStyles?:{[key: string]: string},
-  textareaStyles?:{[key: string]: string},
-  elements?:{[key: string]: {[key: string]: string}},
-  generalStyles:{[key:string]:string},
-  isAuth:boolean
+  buttonStyles?:{[key: string]: string};
+  checkboxStyles?:{[key: string]: string};
+  inputStyles?:{[key: string]: string};
+  labelStyles?:{[key: string]: string};
+  selectStyles?:{[key: string]: string};
+  textareaStyles?:{[key: string]: string};
+  elements?:{[key: string]: {[key: string]: string}};
+  generalStyles:{[key:string]:string};
+  isAuth:boolean;
 }
 
 export interface Error {
