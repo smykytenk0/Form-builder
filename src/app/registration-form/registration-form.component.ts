@@ -1,13 +1,13 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngrx/store';
-import {Router} from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
-import {AuthService} from '../shared/services/auth.service';
-import {User} from '../shared/interfaces/interfaces';
-import {StylesActions} from '../store/styles.actions';
-import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
+import { AuthService } from '../shared/services/auth.service';
+import { User } from '../shared/interfaces/interfaces';
+import { StylesActions } from '../store/styles.actions';
 
 @Component({
   selector: 'app-registration-form',
@@ -26,8 +26,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
-    })
-
+    });
   }
 
   onSubmit(): void {

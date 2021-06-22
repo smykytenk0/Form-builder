@@ -23,7 +23,7 @@ export class AuthEffects{
   login$ = createEffect(()=> this.actions$
     .pipe(
       ofType(loginAction),
-      switchMap((prop: User): Observable<any> => this.auth.logIn(prop)
+      switchMap((prop: User): Observable<any> => this.auth.logIn()
         .pipe(
           map((accessToken:AuthResponse)=>loginSuccessAction(accessToken)),
           catchError((err: Error)=> of(loginFailureAction(err)))

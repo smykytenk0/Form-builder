@@ -10,6 +10,4 @@ import { ComponentItem } from '../../store/component-item';
 export class ButtonComponent implements ComponentItem {
   @Input() styles: { [p: string]: string };
   @Input() buttonName = 'Button';
-
-
 }

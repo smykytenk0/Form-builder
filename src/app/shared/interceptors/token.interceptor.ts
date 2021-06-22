@@ -15,7 +15,7 @@ export class TokenInterceptor implements HttpInterceptor{
         setHeaders: {
           Authorization: this.auth.createToken(req)
         }
-      })
+      });
     }
     return next.handle(req);
   }
