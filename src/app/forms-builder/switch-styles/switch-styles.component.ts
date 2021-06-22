@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { getStylesBy } from '../store/styles.reducer';
+import { getStylesBy } from '../../store/styles.reducer';
 
 @Component({
   selector: 'app-switch',

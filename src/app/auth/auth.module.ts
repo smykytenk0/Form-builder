@@ -3,6 +3,8 @@ import { RegistrationFormComponent } from "./registration-form/registration-form
 import { NgModule } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
 import { LoginFormComponent } from "./login-form/login-form.component";
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "../store/effects";
 
 const routes: Routes = [
   { path: 'registration', component: RegistrationFormComponent },
@@ -15,6 +17,7 @@ const routes: Routes = [
     LoginFormComponent
   ],
   imports: [
+    EffectsModule.forRoot([AuthEffects]),
     SharedModule,
     RouterModule.forChild(routes),
   ]

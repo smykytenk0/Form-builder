@@ -5,9 +5,9 @@ import { FormGroup } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { getStylesBy } from '../store/styles.reducer';
-import { enumTOArray } from '../store/helper';
-import { ElementType } from '../shared/interfaces/interfaces';
+import { getStylesBy } from '../../store/styles.reducer';
+import { enumTOArray } from '../../store/helper';
+import { ElementType } from '../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-forms',

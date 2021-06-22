@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { StylesActions } from '../store/styles.actions';
+import { StylesActions } from '../../store/styles.actions';
 
 
 
