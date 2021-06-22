@@ -4,7 +4,6 @@ import { StoreModule } from '@ngrx/store';
 import { ReactiveComponentModule } from '@ngrx/component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { RouterModule, Routes } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PortalModule } from '@angular/cdk/portal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,9 +14,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 
 import { AppComponent } from './app.component';
 import { ElementsStyleReducer } from './store/styles.reducer';
-import { LoginFormComponent } from './login-form/login-form.component';
 import { environment } from '../environments/environment';
-import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { FormsComponent } from './forms/forms.component';
 import { AccordionBlockComponent } from './accordion-block/accordion-block.component';
 import { ButtonComponent } from './form-components/button/button.component';
@@ -34,21 +31,14 @@ import { HeaderComponent } from './header/header.component';
 import { AuthEffects } from './store/effects';
 import { SimplePipe } from './shared/pipes/simple.pipe';
 import { TokenInterceptor } from "./shared/interceptors/token.interceptor";
+import { AppRoutingModule } from "./app-routing.module";
 
 
-const appRoutes: Routes = [
-  {path: 'login', component: LoginFormComponent},
-  {path: 'registration', component: RegistrationFormComponent},
-  {path: '', component: LoginFormComponent},
-  {path: 'forms', component: FormsComponent, canActivate: [AuthGuard]}
-];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
-    RegistrationFormComponent,
     FormsComponent,
     TextareaComponent,
     AccordionBlockComponent,
@@ -73,8 +63,7 @@ const appRoutes: Routes = [
     ReactiveComponentModule,
     HttpClientModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     PortalModule,
     BrowserAnimationsModule,
     MatDatepickerModule

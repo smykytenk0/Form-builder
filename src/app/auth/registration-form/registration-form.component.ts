@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
-import { AuthService } from '../shared/services/auth.service';
-import { User } from '../shared/interfaces/interfaces';
-import { StylesActions } from '../store/styles.actions';
+import { AuthService } from '../../shared/services/auth.service';
+import { User } from '../../shared/interfaces/interfaces';
+import { StylesActions } from '../../store/styles.actions';
 
 @Component({
   selector: 'app-registration-form',
