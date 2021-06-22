@@ -18,7 +18,8 @@ export class AuthService implements OnDestroy {
 
   constructor(private store: Store,
               private http: HttpClient) {
-    this.subscription = this.store.select(getAuthStatusSelector).pipe(takeUntil(this.unsubscribeAll))
+    this.subscription = this.store.select(getAuthStatusSelector)
+      .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(value => this.authResult = value);
   }
 
@@ -36,7 +37,8 @@ export class AuthService implements OnDestroy {
   }
 
   showAuthStatus(): boolean {
-    this.subscription = this.store.pipe(select(getAuthStatusSelector)).subscribe(value => this.authResult = value);
+    this.subscription = this.store.select(getAuthStatusSelector)
+      .subscribe(value => this.authResult = value);
     return this.authResult;
   }
 
