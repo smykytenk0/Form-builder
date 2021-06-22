@@ -24,12 +24,13 @@ export class AuthService implements OnDestroy {
   }
 
   register(registeredUser: User): Observable<AuthResponse> {
-    return this.http.post(`${environment.baseUrl}users`, registeredUser).pipe(
-      map((user) => {
-          return this.createToken(user);
-        },
-        catchError(err => err))
-    )
+    return this.http.post(`${environment.baseUrl}users`, registeredUser)
+      .pipe(
+        map((user) => {
+            return this.createToken(user);
+          },
+          catchError(err => err))
+      )
   }
 
   logout(): void {
