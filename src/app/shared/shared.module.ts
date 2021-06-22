@@ -1,15 +1,18 @@
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HeaderComponent } from "./components/header/header.component";
+import { RouterModule } from "@angular/router";
+import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
-  declarations:[],
+  declarations:[
+    HeaderComponent
+  ],
   imports: [
-    ReactiveFormsModule,
-    FormsModule,
+    RouterModule,
+    BrowserModule
   ],
   exports: [
-    ReactiveFormsModule,
-    FormsModule
+    HeaderComponent
   ],
 })
 export class SharedModule{}

@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { getAuthStatusSelector } from '../store/styles.reducer';
-import { AuthService } from '../shared/services/auth.service';
+import { getAuthStatusSelector } from '../../../store/styles.reducer';
+import { AuthService } from '../../services/auth.service';
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 

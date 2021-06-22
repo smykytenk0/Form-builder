@@ -9,15 +9,15 @@ import { LabelComponent } from "./form-components/label/label.component";
 import { SelectComponent } from "./form-components/select/select.component";
 import { SwitchStylesComponent } from "./switch-styles/switch-styles.component";
 import { SwitchBuilderComponent } from "./switch-builder/switch-builder.component";
-import { SharedModule } from "../shared/shared.module";
 import { RouterModule, Routes } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 import { ReactiveComponentModule } from "@ngrx/component";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { PortalModule } from "@angular/cdk/portal";
-import { HeaderComponent } from "../header/header.component";
+import { HeaderComponent } from "../shared/components/header/header.component";
 import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   { path: '', component: FormsComponent },
@@ -37,13 +37,13 @@ const routes: Routes = [
     SwitchBuilderComponent,
   ],
   imports: [
-    SharedModule,
     RouterModule.forChild(routes),
     DragDropModule,
     ReactiveComponentModule,
     CommonModule,
     MatExpansionModule,
     PortalModule,
+    ReactiveFormsModule,
   ]
 })
 export class FormsBuilderModule { }

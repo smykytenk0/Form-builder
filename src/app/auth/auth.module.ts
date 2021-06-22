@@ -1,10 +1,10 @@
 import { RouterModule, Routes } from "@angular/router";
 import { RegistrationFormComponent } from "./registration-form/registration-form.component";
 import { NgModule } from "@angular/core";
-import { SharedModule } from "../shared/shared.module";
 import { LoginFormComponent } from "./login-form/login-form.component";
 import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "../store/effects";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   { path: 'registration', component: RegistrationFormComponent },
@@ -18,7 +18,8 @@ const routes: Routes = [
   ],
   imports: [
     EffectsModule.forRoot([AuthEffects]),
-    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(routes),
   ]
 })
