@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { AuthService } from '../../shared/services/auth.service';
 import { User } from '../../shared/interfaces/interfaces';

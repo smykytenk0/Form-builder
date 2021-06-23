@@ -4,8 +4,6 @@ import { Store } from '@ngrx/store';
 
 import { StylesActions } from '../../store/styles.actions';
 
-
-
 @Component({
   selector: 'app-acordion-block',
   templateUrl: './accordion-block.component.html',
@@ -25,7 +23,7 @@ export class AccordionBlockComponent implements OnInit {
   ngOnInit(): void {
     this.keys = Object.keys(this.styles);
     const group = this.keys.reduce((previous, current) => {
-      return {...previous, [current]: new FormControl(this.styles[current])}
+      return {...previous, [current]: new FormControl(this.styles[current])};
     }, {});
     this.elementForm = new FormGroup(group);
   }

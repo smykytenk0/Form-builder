@@ -1,14 +1,16 @@
-import { RouterModule, Routes } from "@angular/router";
-import { RegistrationFormComponent } from "./registration-form/registration-form.component";
-import { NgModule } from "@angular/core";
-import { LoginFormComponent } from "./login-form/login-form.component";
-import { EffectsModule } from "@ngrx/effects";
-import { AuthEffects } from "../store/effects";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
+
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { AuthEffects } from '../store/effects';
+
 
 const routes: Routes = [
-  { path: 'registration', component: RegistrationFormComponent },
-  { path: 'login', component: LoginFormComponent },
+  {path: 'registration', component: RegistrationFormComponent},
+  {path: 'login', component: LoginFormComponent},
 ];
 
 @NgModule({
@@ -23,4 +25,5 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}

@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])
-    })
+    });
   }
 
   onSubmit(): void {
@@ -40,7 +40,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     this.store.dispatch(StylesActions.setAuthStatus({payload: true}));
     this.store.select(getAuthStatusSelector).pipe(
       takeUntil(this.unsubscribeAll),
-      filter(isAuth=>!!isAuth)
+      filter(isAuth => !!isAuth)
     ).subscribe(() => this.router.navigate(['/forms']));
   }
 
