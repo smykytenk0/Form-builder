@@ -30,7 +30,7 @@ export class AuthService implements OnDestroy {
             return this.createToken(user);
           },
           catchError(err => err))
-      )
+      );
   }
 
   logout(): void {
@@ -49,11 +49,11 @@ export class AuthService implements OnDestroy {
           return this.createToken(user);
         },
         catchError(err => err))
-    )
+    );
   }
 
   createToken(obj): any {
-    return jwtEncode(obj, "your-256-bit-secret");
+    return jwtEncode(obj, 'your-256-bit-secret');
   }
 
   ngOnDestroy(): void {

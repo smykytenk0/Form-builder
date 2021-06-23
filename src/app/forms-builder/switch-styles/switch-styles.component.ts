@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
+
 import { getStylesBy } from '../../store/styles.reducer';
 
 @Component({
@@ -13,7 +14,6 @@ export class SwitchStylesComponent {
     this.title = name;
     this.styles$ = this.store.pipe(select(getStylesBy(this.title)));
   }
-
 
   styles$: Observable<{ [key: string]: string }>;
   title: string;

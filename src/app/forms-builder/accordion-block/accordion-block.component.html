@@ -3,10 +3,6 @@
     <mat-panel-title class="item-name">{{ title }} styles</mat-panel-title>
   </mat-expansion-panel-header>
   <form [formGroup]="elementForm">
-    <div>
-      <label id="elementName">Element Name</label>
-    </div>
-    <input>
     <div *ngFor="let style of keys">
       <div>
         <label id="{{style}}"> {{ style }}:</label>

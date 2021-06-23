@@ -1,10 +1,11 @@
-import { NgModule } from "@angular/core";
-import { HeaderComponent } from "./components/header/header.component";
-import { RouterModule } from "@angular/router";
-import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations:[
+  declarations: [
     HeaderComponent
   ],
   imports: [
@@ -15,4 +16,5 @@ import { BrowserModule } from "@angular/platform-browser";
     HeaderComponent
   ],
 })
-export class SharedModule{}
+export class SharedModule {
+}
