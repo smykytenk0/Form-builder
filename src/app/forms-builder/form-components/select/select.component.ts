@@ -11,5 +11,4 @@ export class SelectComponent implements ComponentItem {
   @Input() styles: { [p: string]: string };
   @Input() select = 'select';
   @Input() options = ['option1', 'option2'];
-
 }

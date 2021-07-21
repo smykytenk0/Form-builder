@@ -16,10 +16,13 @@ export class SwitchBuilderComponent {
 
   type: string;
   styles$: Observable<{ [key: string]: string }>;
-  @Input() set item(name: string){
+
+  @Input() set item(name: string) {
     this.type = getTypeFromName(name);
     this.styles$ = this.store.pipe(select(getStylesBy(name)));
   }
-  constructor(private store: Store) {}
+
+  constructor(private store: Store) {
+  }
 
 }

@@ -10,6 +10,4 @@ import { ComponentItem } from '../../../store/component-item';
 export class LabelComponent implements ComponentItem {
   @Input() styles: { [p: string]: string };
   @Input() label = 'Label';
-
-
 }

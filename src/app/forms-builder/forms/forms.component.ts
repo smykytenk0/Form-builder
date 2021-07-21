@@ -30,7 +30,8 @@ export class FormsComponent implements AfterViewInit, OnInit {
   domPortal: DomPortal<any>;
   form: FormGroup;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+  }
 
   getStylesByType(type: string): Observable<string> {
     return this.store.pipe(select(getStylesBy(type)));
