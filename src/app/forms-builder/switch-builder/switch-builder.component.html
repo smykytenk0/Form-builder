@@ -1,0 +1,8 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="ElementType.button" ><app-button  [styles]="styles$ | ngrxPush"></app-button></div>
+  <div *ngSwitchCase="ElementType.checkbox"><app-checkbox [styles]="styles$ | ngrxPush" ></app-checkbox></div>
+  <div *ngSwitchCase="ElementType.input"><app-input [styles]="styles$ | ngrxPush"></app-input></div>
+  <div *ngSwitchCase="ElementType.label"><app-label [styles]="styles$ | ngrxPush"></app-label></div>
+  <div *ngSwitchCase="ElementType.select"><app-select [styles]="styles$ | ngrxPush"></app-select></div>
+  <div *ngSwitchCase="ElementType.textarea"><app-textarea [styles]="styles$ | ngrxPush"></app-textarea></div>
+</div>
