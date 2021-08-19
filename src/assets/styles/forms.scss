@@ -1,62 +1,79 @@
 @import "../../assets/styles/variable";
 
-.control{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-input{
-  outline: none;
-  border-radius: 20px;
-  border:3px solid $color-6;
-  width: 200px;
-  height: 20px;
-  &:focus{
-    border: 3px solid $color-4;
-    width: 200px;
-    height: 20px;
-  }
-  &.ng-invalid.ng-touched{
-    border:3px solid $color-3;
-  }
-  &.ng-valid.ng-touched{
-    border:3px solid $color-5;
-  }
-}
-
-small{
-  color: $color-3;
-}
-
 .form-wrapper{
   display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: 0 auto;
-  align-items: center;
-  background-color: $color-7;
-}
-
-a{
-  text-decoration: none;
-}
-
-button{
-  border-radius: 20px;
-  outline: none;
-  border: 1px solid $color-1;
-  width: 75px;
-  height: 30px;
-  background-color: $color-6;
-  color: black;
-  cursor: pointer;
-  margin: 10px 150px;
+  justify-content: center;
 }
 
 h1{
-  padding-top: 10px;
+  font-size: 35px;
+  margin-top: 40px;
+  text-align: center;
+  color: $color-8;
+  font-weight: 500;
 }
 
-label{
-  padding: 5px;
+.control{
+  padding: 10px 0;
+
+  & input{
+    width: 400px;
+    background-color: #f6f7f9;
+    border: 1px solid #ecedef;
+    border-radius: 8px;
+    height: 40px;
+    outline: none;
+    text-indent: 10px;
+  }
+}
+
+.form-buttons{
+  display: flex;
+  width: 100%;
+}
+
+.form-buttons *:nth-child(2){
+  margin-left: 10px;
+}
+
+.form-button{
+  margin-top: 10px;
+  float: left;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  flex-basis: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.sign-up{
+  background-color: $color-8;
+  color: $color-6;
+}
+
+.sign-in{
+  border: 1px solid $color-8;
+  background-color: $color-6;
+  color: $color-8;
+}
+
+.privacy-policy-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.checkbox{
+  outline: none;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+
+.privacy-policy-link{
+  text-decoration: none;
+  color: $color-8;
 }

@@ -25,12 +25,14 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(5)])
+      password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      check: new FormControl(false, [Validators.requiredTrue])
     });
   }
 
   onSubmit(): void {
     this.formData = this.form.value;
+    console.log(this.formData.email);
     this.auth.register(this.formData).pipe(takeUntil(this.unsubscribeAll)).subscribe();
     this.store.dispatch(StylesActions.setAuthStatus({payload: true}));
     this.router.navigate(['/forms']);
@@ -41,4 +43,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     this.unsubscribeAll.complete();
   }
 
+  routeToLogin() {
+    this.router.navigate(['/login'])
+  }
 }

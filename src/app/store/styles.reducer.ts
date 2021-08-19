@@ -13,51 +13,52 @@ export const initialState: ElementStyles ={
     backgroundColor: 'white',
     color: 'black',
     cursor: 'pointer',
-    margin: '10px 20px',
+    margin: '10px 5%',
     name: 'casaaas',
   },
   checkboxStyles: {
-    margin: '10px 20px',
+    margin: '10px 5%',
     fontSize: '16px'
   },
   inputStyles:{
-    margin: '10px 20px',
+    margin: '10px 5%',
     borderRadius: '20px',
     border: '1px solid black',
     outline: 'none',
-    width: '450px',
+    width: '80%',
     height: '35px',
-    paddingLeft: '20px',
+    padding: '5px 5%',
     fontSize: '20px'
   },
   labelStyles:{
-    margin: '10px 20px',
+    margin: '10px 5%',
     fontSize: '16px'
   },
   selectStyles:{
-    margin: '10px 20px',
+    margin: '10px 5%',
     border: '1px solid black',
     borderRadius: '20px',
     width: '100px',
     height: '35px',
     paddingLeft: '10px',
-    outline: 'none'
+    outline: 'none',
+    backgroundColor: 'transparent'
   },
   textareaStyles:{
-    margin: '10px 20px',
+    margin: '10px 5%',
     borderRadius: '20px',
-    width: '430px',
+    width: '80%',
     height: '150px',
-    padding: '20px',
+    padding: '5%',
     outline: 'none'
   },
   elements: {},
   generalStyles:{
-    backgroundColor: '#f5ff85 ',
-    border: '3px solid red',
-    width: '99%',
+    backgroundColor: 'transparent',
+    border: 'none',
+    width: '100%',
     height: '90vh',
-    borderRadius: '20px'
+    borderRadius: '0'
   },
   isAuth: false,
 };

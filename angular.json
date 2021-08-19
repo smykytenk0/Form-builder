@@ -129,6 +129,7 @@
   },
   "defaultProject": "formbuilder",
   "cli": {
+    "analytics": "ab981fbf-306a-4c8b-8edc-521219613840",
     "defaultCollection": "@ngrx/schematics"
   }
 }

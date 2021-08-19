@@ -49,4 +49,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     this.unsubscribeAll.complete();
   }
 
+  routeToRegister() {
+    this.router.navigate(['/registration'])
+  }
 }

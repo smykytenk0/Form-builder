@@ -8,14 +8,24 @@
 .portal-outlet{
   width: 33.33vw;
   height: 97vh;
-  border: 1px dotted $color-2;
-}
+  border-right: 1px dotted $color-2;
 
-h3{
-  margin: 0;
+  &:last-child{
+    border: none
+  }
 }
 
 .portal{
   padding: 0;
 }
 
+h3{
+  margin-left: 20px;
+}
+
+h1{
+  padding: 20px;
+  margin: 0;
+  color: $color-8;
+  font-weight: 500;
+}

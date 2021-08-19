@@ -11,19 +11,20 @@
 </div>
 
 <div #accordionComp class="portal-outlet">
+  <h1>Styles:</h1>
   <app-switch item="general"></app-switch>
   <div *ngFor="let item of dropArray">
     <app-switch [item]="item"></app-switch>
   </div>
 </div>
 <div [formGroup]="form" #builderComp class="portal" >
-  <h3>Builder section</h3>
+  <h1>Builder section</h1>
   <div cdkDropList
        #dropList="cdkDropList"
        [cdkDropListData]="dropArray"
        [cdkDropListConnectedTo]="[dragList]"
        (cdkDropListDropped)="drop($event)">
-    <div>Put your elements here:</div>
+    <h3>Put your elements here:</h3>
     <div class="builder" [ngStyle]="getStylesByType('general') | ngrxPush">
       <div *ngFor="let item of dropArray" cdkDrag>
         <app-switch-builder [item]="item"></app-switch-builder>
@@ -32,7 +33,7 @@
   </div>
 </div>
 <div #elementsComp class="portal">
-  <h3>Element section</h3>
+  <h1>Element section</h1>
   <div cdkDropList
          #dragList="cdkDropList"
          [cdkDropListData]="dragArray"
