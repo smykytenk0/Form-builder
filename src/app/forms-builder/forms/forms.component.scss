@@ -1,0 +1,21 @@
+@import "../../../assets/styles/variable";
+
+.example-portal-outlet{
+  display: flex;
+  height: 97vh;
+}
+
+.portal-outlet{
+  width: 33.33vw;
+  height: 97vh;
+  border: 1px dotted $color-2;
+}
+
+h3{
+  margin: 0;
+}
+
+.portal{
+  padding: 0;
+}
+

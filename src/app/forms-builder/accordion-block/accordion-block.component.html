@@ -1,0 +1,14 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title class="item-name">{{ title }} styles</mat-panel-title>
+  </mat-expansion-panel-header>
+  <form [formGroup]="elementForm">
+    <div *ngFor="let style of keys">
+      <div>
+        <label id="{{style}}"> {{ style }}:</label>
+      </div>
+      <input formControlName="{{ style }}">
+    </div>
+    <button type ='submit' (click)="enterChanges(elementForm.value)">Apply Changes</button>
+  </form>
+</mat-expansion-panel>
